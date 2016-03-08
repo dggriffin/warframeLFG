@@ -1,0 +1,4 @@
+FlowRouter.route('/', {
+  name: 'homepage'
+});
+
