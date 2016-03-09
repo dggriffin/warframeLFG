@@ -6,7 +6,7 @@ App = React.createClass({
 
   getMeteorData() {
     return {
-      posts: Posts.find({}, {sort: {createdAt: -1}}).fetch()
+      missions: Missions.find({}).fetch()
     }
   },
 
@@ -23,7 +23,7 @@ App = React.createClass({
             </div>
           </header>
           <div className="container">
-            <PostForm/>
+            <PostForm missions={this.data.missions} />
           </div>
         </div>
     );

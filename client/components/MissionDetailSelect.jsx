@@ -5,7 +5,7 @@ MissionDetailSelect = React.createClass({
   render() {
     return (
       <div className="card padding-6">
-
+      
       </div>
     );
   }
