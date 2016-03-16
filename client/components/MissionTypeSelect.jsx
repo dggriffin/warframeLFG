@@ -4,14 +4,14 @@ MissionTypeSelect = React.createClass({
   },
   renderMissionRadios() {
     return this.props.missions.map((mission) => {
-      return <MissionRadioButton mission={mission} />
+      return <MissionRadioButton key={mission._id} mission={mission} />
     });
   },
 
   render() {
     return (
         <form action="#">
-          {this.renderMissionRadios}
+          {this.renderMissionRadios()}
         </form>
     );
   }
