@@ -1,13 +1,25 @@
 var React = require('react');
 
 class MissionDetailSelect extends React.Component{
-  // propTypes: {
-  //   track: React.PropTypes.object.isRequired
-  // },
+  constructor(props) {    /* Note props is passed into the constructor in order to be used */
+    super(props);
+    this.state = {
+        mission: props.mission
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      mission: nextProps.mission
+    });
+  }
+
   render() {
     return (
-      <div className="card padding-6">
-
+      <div>
+        <p className="grey-text">
+          {this.state.mission.name}
+        </p>
       </div>
     );
   }

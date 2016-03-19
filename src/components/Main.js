@@ -2,10 +2,8 @@ require('normalize.css');
 require('styles/App.css');
 require('styles/css/materialize.css');
 var Rebase = require('re-base');
-var List = require('./List');
-var AddItem = require('./AddItem');
+//var AddItem = require('./AddItem');
 var PostForm = require('./CreateModal/PostForm');
-var missions = require('json!../sources/missions.json');
 var base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
 
 import React from 'react';
@@ -51,9 +49,16 @@ class AppComponent extends React.Component {
           <div className="col-sm-6 col-md-offset-3">
             <div className="col-sm-12">
               <h3 className="text-center">WarframeLFG</h3>
-              <AddItem add={this.handleAddItem.bind(this)}/>
-              {this.state.loading === true ? <h3> LOADING... </h3> : <PostForm missions={this.state.list} />}
+              <a className="waves-effect waves-light btn modal-trigger cyan" href="#modal1">Post</a>
             </div>
+          </div>
+        </div>
+        <div id="modal1" className="modal">
+          <div className="modal-content">
+              <PostForm missions={this.state.list} />
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat cyan white-text">Agree</a>
           </div>
         </div>
       </div>

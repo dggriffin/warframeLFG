@@ -10,7 +10,21 @@
 <body>
   <div id="app">APPLICATION CONTENT</div>
 
-  <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="./styles/js/materialize.min.js"></script>
+
+  <script>
+    __REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__
+
+    //MAKE MODAL WORK..
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal-trigger').leanModal();
+    });
+  </script>
+
   <script type="text/javascript" src="assets/app.js"></script>
 </body>
 </html>

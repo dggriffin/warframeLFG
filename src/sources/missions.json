@@ -1,5 +1,4 @@
-{ "missions" :
-  [
+[
        {
          "name": "Void",
          "type": ["Capture", "Exterminate", "Survival", "Defense", "Mobile Defense", "Sabotage"],
@@ -38,4 +37,3 @@
          "tier": ["I", "II", "III", "IV"]
        }
    ]
- }

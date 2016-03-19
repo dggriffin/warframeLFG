@@ -4,12 +4,15 @@ class MissionRadioButton extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-        mission: props.mission
+        mission: props.mission,
+        selectHandler: props.selectHandler,
+        checked: null
     };
   }
 
   handleChange(event) {
-    this.setState({checked: event.target.value});
+    //this.setState({checked: event.target.value});
+    this.state.selectHandler(this.state.mission);
   }
 
   render() {
@@ -20,7 +23,7 @@ class MissionRadioButton extends React.Component{
 		      name="group1"
 		      type="radio"
 		      id={this.state.mission.name}
-		      onChange={this.handleChange}
+		      onChange={this.handleChange.bind(this)}
           />
           <label
           	htmlFor={this.state.mission.name}
@@ -30,10 +33,10 @@ class MissionRadioButton extends React.Component{
         </p>
     );
   }
-};
+}
 
 MissionRadioButton.propTypes = {
     mission: React.PropTypes.object.isRequired
-};
+}
 
 module.exports = MissionRadioButton;
