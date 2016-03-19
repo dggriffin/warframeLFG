@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "warframeLfg",
+    "style": "scss",
+    "postcss": true
+  }
+}
