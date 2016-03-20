@@ -7604,6 +7604,10 @@ small {
   font-weight: 300;
 }
 
+.thinnest {
+  font-weight: 100;
+}
+
 .thin {
   font-weight: 200;
 }

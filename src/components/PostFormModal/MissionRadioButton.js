@@ -19,11 +19,11 @@ class MissionRadioButton extends React.Component{
     return (
         <p>
           <input
-		      checked={this.state.checked}
-		      name="group1"
-		      type="radio"
-		      id={this.state.mission.name}
-		      onChange={this.handleChange.bind(this)}
+  		      checked={this.state.checked}
+  		      name="group1"
+  		      type="radio"
+  		      id={this.state.mission.name}
+  		      onChange={this.handleChange.bind(this)}
           />
           <label
           	htmlFor={this.state.mission.name}
