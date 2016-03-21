@@ -1,5 +1,5 @@
-var React = require('react');
-var MissionRadioButton = require('./MissionRadioButton');
+import React from 'react';
+import MissionRadioButton from './MissionRadioButton';
 
 class MissionTypeSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */

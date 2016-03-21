@@ -1,7 +1,6 @@
-var React = require('react');
-var MissionTypeSelect = require('./MissionTypeSelect');
-var MissionDetailSelect = require('./MissionDetailSelect');
-
+import React from 'react';
+import MissionTypeSelect from './MissionTypeSelect';
+import MissionDetailSelect from './MissionDetailSelect';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 

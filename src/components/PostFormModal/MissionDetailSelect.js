@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 class MissionDetailSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */

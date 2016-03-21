@@ -1,7 +1,6 @@
-var React = require('react');
-const PostFormModal = require('../PostFormModal/PostFormModal');
-const GroupPostingsToolbar = require('./GroupPostingsToolbar');
-
+import React from 'react';
+import PostFormModal from '../PostFormModal/PostFormModal';
+import GroupPostingsToolbar from './GroupPostingsToolbar';
 import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
 

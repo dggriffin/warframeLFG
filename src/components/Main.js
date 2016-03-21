@@ -1,14 +1,13 @@
 require('normalize.css');
 require('styles/App.css');
 require('styles/css/materialize.css');
-
-const Rebase = require('re-base');
-const GroupPostings = require('./GroupPostings/GroupPostings');
-const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
-
+import Rebase from 're-base';
+import GroupPostings from './GroupPostings/GroupPostings';
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import CircularProgress from 'material-ui/lib/circular-progress';
+
+const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
 
 class AppComponent extends React.Component {
   constructor(props){
