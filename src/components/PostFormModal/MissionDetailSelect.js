@@ -33,7 +33,6 @@ class MissionDetailSelect extends React.Component{
     });
   }
 
-
   render() {
     return (
       <div>

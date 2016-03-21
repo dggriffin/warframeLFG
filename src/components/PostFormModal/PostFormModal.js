@@ -10,7 +10,7 @@ class PostFormModal extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-        missions: props.missions,
+        appData: props.appData,
         selectedMission: null,
         open: false,
         handleClose: () => {}
@@ -18,7 +18,7 @@ class PostFormModal extends React.Component{
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      missions: nextProps.missions,
+      appData: nextProps.appData,
       open: nextProps.open,
       handleClose: nextProps.handleClose
     });
@@ -64,7 +64,7 @@ class PostFormModal extends React.Component{
           <div className="row">
             <div className="col s6">
               <h5 className="cyan-text">Mission Type:</h5>
-              <MissionTypeSelect missions={this.state.missions} selectHandler={this.handleMissionSelect.bind(this)}/>
+              <MissionTypeSelect missions={this.state.appData.missions} selectHandler={this.handleMissionSelect.bind(this)}/>
             </div>
             {this.renderMissionDetail()}
           </div>

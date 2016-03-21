@@ -18,35 +18,21 @@ class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-      missions: [],
+      appData: props.appData,
       onCreatePost: props.onCreatePost,
       missionFilter: "1"
     };
   }
 
-  componentDidMount(){
-    this.ref = base.syncState('missions', {
-      context: this,
-      state: 'missions',
-      asArray: true,
-      queries: {
-        orderByKey: 'name'
-      },
-      then(){
-        this.setState({loading: false})
-      }
-    });
-  }
-
-
   componentWillReceiveProps(nextProps) {
     this.setState({
-      onCreatePost: nextProps.onCreatePost
+      onCreatePost: nextProps.onCreatePost,
+      appData: nextProps.appData
     });
   }
 
   renderMenuItems(){
-    return this.state.missions.map((mission) => {
+    return this.state.appData.missions.map((mission) => {
       return <MenuItem key={mission.name} value={mission.name} primaryText={mission.name} />
     });
   }

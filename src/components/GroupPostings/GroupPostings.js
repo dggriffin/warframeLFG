@@ -33,7 +33,7 @@ class GroupPostings extends React.Component{
       <div className="container">
         <GroupPostingsToolbar appData={this.state.appData} onCreatePost={this.handleCreate.bind(this)}/>
         <PostFormModal
-          missions={this.state.appData.missions}
+          appData={this.state.appData}
           open={this.state.postFormOpen}
           handleClose={this.handleClose.bind(this)}/>
       </div>
