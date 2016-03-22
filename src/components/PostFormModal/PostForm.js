@@ -1,5 +1,6 @@
 import React from 'react';
-import MissionFields from './MissionFields';
+import Divider from 'material-ui/lib/divider';
+import MissionFields from './MissionFields/MissionFields';
 
 class PostForm extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -20,6 +21,7 @@ class PostForm extends React.Component{
   render() {
     return (
       <div>
+        <Divider />
         <MissionFields
           missions={this.state.appData.missions}
         />

@@ -24,3 +24,27 @@ h1,h2,h3,h4 {
   border-width: 1px 0;
   background: #666;
 }
+
+.hero-div {
+  height: 100%;
+  padding-top: 10em;
+  padding-bottom: 10em;
+  background-image: url("../images/0039-new.jpg");
+  background-position:top;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-color: #00bcd4;
+}
+
+.group-posting {
+  padding-top: 2.5em;
+  padding-bottom: 5em;
+}
+
+.post-title-div {
+  display: inline-block;
+}
+
+.post-title {
+  
+}

@@ -6,6 +6,7 @@ import GroupPostings from './GroupPostings/GroupPostings';
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import CircularProgress from 'material-ui/lib/circular-progress';
+import Paper from 'material-ui/lib/paper';
 
 const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
 
@@ -37,17 +38,23 @@ class AppComponent extends React.Component {
     return (
       <div>
         <AppBar
-          title="WarframeLFG"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          className="white"
+          title="WarframeLFG.io"
+          titleStyle={{color: "#00bcd4", fontWeight: 100}}
           />
-        <div className="container">
-          <div className="row center">
-            <h3 className="center thinnest">WarframeLFG</h3>
+        <div className="hero-div">
+          <div className="row center container white-text">
+            <h1 className="center">WarframeLFG</h1>
+            <h5 className="thinnest">
+              A simple app to post and search for groups in Warframe.
+            </h5>
           </div>
         </div>
-        <div className="center">
-          {this.state.loading ? <CircularProgress size={2} /> : <GroupPostings appData={this.state.appData} />}
-        </div>
+        <Paper zDepth={1} rounded={false}>
+          <div className="">
+            {this.state.loading ? <CircularProgress size={2} /> : <GroupPostings appData={this.state.appData} />}
+          </div>
+        </Paper>
       </div>
     )
   }
