@@ -11,16 +11,13 @@ import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 
-const Rebase = require('re-base');
-const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
-
 class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
       appData: props.appData,
       onCreatePost: props.onCreatePost,
-      missionFilter: "1"
+      missionFilter: '1'
     };
   }
 

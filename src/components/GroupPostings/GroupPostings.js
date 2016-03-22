@@ -1,8 +1,6 @@
 import React from 'react';
 import PostFormModal from '../PostFormModal/PostFormModal';
 import GroupPostingsToolbar from './GroupPostingsToolbar';
-import Paper from 'material-ui/lib/paper';
-import RaisedButton from 'material-ui/lib/raised-button';
 
 class GroupPostings extends React.Component{
   constructor(props) {

@@ -1,32 +1,38 @@
 import React from 'react';
-import MissionRadioButton from './MissionRadioButton';
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 
 class MissionTypeSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
         missions: props.missions,
-        selectHandler: props.selectHandler
+        selectHandler: props.selectHandler,
+        value: null
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      missions: nextProps.missions
-    });
+  handleChange (event, index, value) {
+    this.setState({value});
+    this.state.selectHandler(value);
   }
 
-  renderMissionRadios() {
-      return this.state.missions.map((mission) => {
-        return <MissionRadioButton key={mission.name} mission={mission} selectHandler={this.state.selectHandler.bind(this)} />
-      });
+  renderMenuItems(){
+    return this.state.missions.map((mission) => {
+      return <MenuItem key={mission.name} value={mission} primaryText={mission.name} />
+    });
   }
 
   render() {
     return (
-        <form action="#">
-          {this.renderMissionRadios()}
-        </form>
+      <SelectField
+        value={this.state.value}
+        onChange={this.handleChange.bind(this)}
+        floatingLabelText="Mission Type"
+        floatingLabelStyle={{fontSize: "1.2em"}}
+      >
+        {this.renderMenuItems()}
+      </SelectField>
     );
   }
 }
