@@ -31,6 +31,9 @@ class MissionFields extends React.Component{
     return (
         <form action="#">
           <div className="row">
+            <div className="col s12">
+              <span className='cyan-text'>mission details</span>
+            </div>
             <div className="col s6">
                 <MissionSelect
                   missions={this.state.missions}

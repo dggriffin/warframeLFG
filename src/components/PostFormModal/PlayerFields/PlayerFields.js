@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import RegionSelect from './RegionSelect';
 import PlatformSelect from './PlatformSelect';
+import Divider from 'material-ui/lib/divider';
 
 class PlayerFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -20,6 +21,9 @@ class PlayerFields extends React.Component{
   render() {
     return (
       <div className="row">
+      <div className="col s12">
+        <span className='cyan-text'>player details</span>
+      </div>
         <div className="col s6">
           <TextField
             floatingLabelText="username"
@@ -31,9 +35,9 @@ class PlayerFields extends React.Component{
           />
         </div>
         <div className="col s6">
-        <RegionSelect
-          regions={this.state.appData.regions}
-        />
+          <RegionSelect
+            regions={this.state.appData.regions}
+          />
         </div>
       </div>
     );

@@ -25,7 +25,6 @@ class PostForm extends React.Component{
         <PlayerFields
           appData={this.state.appData}
         />
-        <Divider />
         <MissionFields
           missions={this.state.appData.missions}
         />
