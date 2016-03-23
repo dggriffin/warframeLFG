@@ -52,7 +52,7 @@ class AppComponent extends React.Component {
         </div>
         <Paper zDepth={1} rounded={false}>
           <div className="">
-            {this.state.loading ? <CircularProgress size={2} /> : <GroupPostings appData={this.state.appData} />}
+            {this.state.loading ? <div className="center"> <CircularProgress size={2} /> </div> : <GroupPostings appData={this.state.appData} />}
           </div>
         </Paper>
       </div>

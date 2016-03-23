@@ -2,9 +2,8 @@ import React from 'react';
 import PostFormModal from '../PostFormModal/PostFormModal';
 import GroupPostingsToolbar from './GroupPostingsToolbar';
 import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
-import Paper from 'material-ui/lib/paper';
+import GroupPost from './GroupPost';
 
 class GroupPostings extends React.Component{
   constructor(props) {
@@ -31,14 +30,7 @@ class GroupPostings extends React.Component{
 
   renderPosts(){
     return this.state.appData.postings.map((post) => {
-      return <Paper>
-        <ListItem>
-          <div className="post-title-div">
-            <p className="post-title">{post.mission.name}</p>
-            {post.mission.type}
-          </div>
-        </ListItem>
-      </Paper>
+      return <GroupPost post={post}/>
     });
   }
 

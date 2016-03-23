@@ -42,9 +42,16 @@ h1,h2,h3,h4 {
 }
 
 .post-title-div {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
 }
 
 .post-title {
-  
+  margin-right: .5em;
+}
+
+.post-time {
+  float: right;
 }

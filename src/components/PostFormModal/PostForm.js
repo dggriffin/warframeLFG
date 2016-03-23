@@ -2,6 +2,7 @@ import React from 'react';
 import Divider from 'material-ui/lib/divider';
 import MissionFields from './MissionFields/MissionFields';
 import PlayerFields from './PlayerFields/PlayerFields';
+import RequirementFields from './RequirementFields/RequirementFields';
 
 class PostForm extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -27,6 +28,9 @@ class PostForm extends React.Component{
         />
         <MissionFields
           missions={this.state.appData.missions}
+        />
+        <RequirementFields
+          appData={this.state.appData}
         />
       </div>
     );
