@@ -42,7 +42,6 @@ class PostFormModal extends React.Component{
     return (
       <div>
         <Dialog
-          title="Create Group"
           actions={this.getModalActions()}
           modal={false}
           open={this.state.open}

@@ -1,6 +1,6 @@
 import React from 'react';
-import MissionDetailSelect from './MissionDetailSelect';
 import MissionTypeSelect from './MissionTypeSelect';
+import MissionSelect from './MissionSelect';
 
 class MissionFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -24,7 +24,7 @@ class MissionFields extends React.Component{
   }
 
   renderMissionDetail(){
-    return this.state.selectedMission ? <div className="col s6"> <h5 className="cyan-text">Mission Details:</h5> <MissionDetailSelect className="col s6" mission={this.state.selectedMission}/></div> : <div></div>
+    return this.state.selectedMission ? <div className="col s6"> <MissionTypeSelect className="col s6" mission={this.state.selectedMission}/></div> : <div></div>
   }
 
   render() {
@@ -32,7 +32,7 @@ class MissionFields extends React.Component{
         <form action="#">
           <div className="row">
             <div className="col s6">
-                <MissionTypeSelect
+                <MissionSelect
                   missions={this.state.missions}
                   selectHandler={this.handleMissionSelect.bind(this)}
                 />
