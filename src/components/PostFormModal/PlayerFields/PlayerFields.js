@@ -20,26 +20,23 @@ class PlayerFields extends React.Component{
 
   render() {
     return (
-      <div className="row">
-      <div className="col s12">
-        <span className='cyan-text'>player details</span>
-      </div>
-        <div className="col s6">
-          <TextField
-            floatingLabelText="username"
-            floatingLabelStyle={{fontSize: "1.2em"}}
-            multiLine={true}
-          />
-          <PlatformSelect
-            platforms={this.state.appData.platforms}
-          />
+        <div className="row">
+          <div className="col s6">
+            <TextField
+              floatingLabelText="username"
+              floatingLabelStyle={{fontSize: "1.2em"}}
+              multiLine={true}
+            />
+            <PlatformSelect
+              platforms={this.state.appData.platforms}
+            />
+          </div>
+          <div className="col s6">
+            <RegionSelect
+              regions={this.state.appData.regions}
+            />
+          </div>
         </div>
-        <div className="col s6">
-          <RegionSelect
-            regions={this.state.appData.regions}
-          />
-        </div>
-      </div>
     );
   }
 }

@@ -29,20 +29,15 @@ class MissionFields extends React.Component{
 
   render() {
     return (
-        <form action="#">
-          <div className="row">
-            <div className="col s12">
-              <span className='cyan-text'>mission details</span>
-            </div>
-            <div className="col s6">
-                <MissionSelect
-                  missions={this.state.missions}
-                  selectHandler={this.handleMissionSelect.bind(this)}
-                />
-            </div>
-            {this.renderMissionDetail()}
+        <div className="row">
+          <div className="col s6">
+              <MissionSelect
+                missions={this.state.missions}
+                selectHandler={this.handleMissionSelect.bind(this)}
+              />
           </div>
-        </form>
+          {this.renderMissionDetail()}
+        </div>
     );
   }
 }

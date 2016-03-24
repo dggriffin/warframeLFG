@@ -22,9 +22,6 @@ class RequirementFields extends React.Component{
   render() {
     return (
       <div className="row">
-      <div className="col s12">
-        <span className='cyan-text'>party details</span>
-      </div>
         <div className="col s6">
           <OpenSpotsSelect/>
             <NeedWarframesList

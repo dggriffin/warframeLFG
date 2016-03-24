@@ -55,3 +55,12 @@ h1,h2,h3,h4 {
 .post-time {
   float: right;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.step-content {
+  padding: 24px;
+}
