@@ -10,6 +10,7 @@ import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
+import Toggle from 'material-ui/lib/toggle';
 
 class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -17,7 +18,8 @@ class GroupPostingsToolbar extends React.Component{
     this.state = {
       appData: props.appData,
       onCreatePost: props.onCreatePost,
-      missionFilter: '1'
+      missionFilter: '1',
+      advancedToggle: false
     };
   }
 
@@ -38,7 +40,20 @@ class GroupPostingsToolbar extends React.Component{
     this.setState({missionFilter: value});
   }
 
+  handleToggle(event, index, value){
+    debugger;
+    this.setState({advancedToggle: value});
+  }
+
   render() {
+    const styles = {
+      block: {
+        maxWidth: 50,
+      },
+      toggle: {
+        marginBottom: 0,
+      },
+    };
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true} float="left">
@@ -48,18 +63,13 @@ class GroupPostingsToolbar extends React.Component{
           </DropDownMenu>
         </ToolbarGroup>
         <ToolbarGroup float="right">
-          <ToolbarTitle text="Options" />
-          <FontIcon className="muidocs-icon-custom-sort" />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Download" />
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+            <Toggle
+              toggled={this.state.advancedToggle}
+              onToggle={this.handleToggle.bind(this)}
+              label="Advanced"
+            />
+          </div>
           <ToolbarSeparator />
           <RaisedButton label="Create Group"
             primary={true}

@@ -32,8 +32,9 @@ class NeedWarframesSelect extends React.Component{
     return (
       <SelectField
         value={this.state.value}
+        maxHeight={250}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText="have warframes"
+        floatingLabelText="need warframe"
         floatingLabelStyle={{fontSize: "1.2em"}}
       >
         {this.renderMenuItems()}

@@ -27,12 +27,12 @@ class RequirementFields extends React.Component{
       </div>
         <div className="col s6">
           <OpenSpotsSelect/>
-          <HaveWarframesList
-            warframes={this.state.appData.warframes}
-          />
+            <NeedWarframesList
+              warframes={this.state.appData.warframes}
+            />
         </div>
         <div className="col s6">
-          <NeedWarframesList
+          <HaveWarframesList
             warframes={this.state.appData.warframes}
           />
         </div>
