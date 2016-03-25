@@ -89,6 +89,15 @@ class PostForm extends React.Component{
         <Step
           orderStepLabel="1"
           stepLabel="user details"
+          actions={[
+            <RaisedButton
+              key={0}
+              label="Continue"
+              primary={true}
+              onClick={this.continue.bind(this)}
+            />,
+            <FlatButton key={1} label="Cancel" />,
+          ]}
         >
           <PlayerFields
             appData={this.state.appData}

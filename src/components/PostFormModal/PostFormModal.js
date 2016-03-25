@@ -44,7 +44,7 @@ class PostFormModal extends React.Component{
         <Dialog
           bodyStyle={{padding: "0 !important"}}
           modal={false}
-          actions={this.getModalActions()}
+          contentStyle={{maxWidth:680}}
           open={this.state.open}
           actionsContainerClassName={""}
           onRequestClose={this.state.handleClose.bind(this)}
