@@ -1,18 +1,27 @@
 import React from 'react';
+var {
+  Image
+} = React;
 import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
+
+import Rebase from 're-base';
+const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
+
 
 class GroupPost extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      post: props.post
+      post: props.post,
+      appData: props.appData
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      post : nextProps.post
+      post : nextProps.post,
+      appData: props.appData
     });
   }
 
@@ -44,18 +53,33 @@ class GroupPost extends React.Component{
     return Math.floor(seconds) + " seconds";
   }
 
+  renderHaveWarframes() {
+    debugger;
+    return this.state.post.haveWarframes.map((warframe) => {
+      if (this.state.appData.warframes[warframe.name].image) {
+        return <img className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+      }
+    }, this);
+  }
+
   render() {
     return (
       <Paper>
         <ListItem>
           <div className="post-title-div">
-            <span className="post-title">{this.state.post.mission.name}</span>
+            <span className="post-title cyan-text">{this.state.post.mission.name}</span>
             <span className="post-title grey-text">{this.state.post.mission.type}</span>
             <span className="post-title grey-text">{this.state.post.mission.tier}</span>
             <span className="post-time grey-text">{this.getElapsedTime() + " ago"}</span>
           </div>
-          <div>
-            <span className="grey-text">Posted by: {this.state.post.creator}</span>
+          <div className="post-content-div">
+            <span className="pink-text">Posted by: {this.state.post.creator}</span>
+            <div className="have-warframe-div">
+              {this.renderHaveWarframes()}
+            </div>
+            <div className="need-warframe-div">
+              {this.renderHaveWarframes()}
+            </div>
           </div>
         </ListItem>
       </Paper>

@@ -8,22 +8,26 @@ import Step from 'material-ui/lib/Stepper/HorizontalStep';
 import FontIcon from 'material-ui/lib/font-icon';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
+import Done from 'material-ui/lib/svg-icons/action/done';
 
 class PostForm extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
         appData: props.appData,
-        selectedMission: null,
         open: false,
-        handleClose: () => {},
+        handleClose: props.handleClose,
         activeStep: -1,
-        lastActiveStep: 0
+        lastActiveStep: 0,
+        playerObject: {},
+        missionObject: {},
+        requirementObject: {}
     };
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      appData: nextProps.appData
+      appData: nextProps.appData,
+      handleClose: nextProps.handleClose,
     });
   }
 
@@ -52,16 +56,25 @@ class PostForm extends React.Component{
     return currentStep < this.state.lastActiveStep;
   }
 
-  createIcon(step) {
+  renderStepIcon(step) {
     if (step.props.isCompleted) {
       return (
-        <FontIcon className="material-icons" style={{fontSize: 14}}>
-          done
-        </FontIcon>
+        <Done/>
       );
     }
-
     return <span>{step.props.orderStepLabel}</span>;
+  }
+
+  handlePlayerFormChange(playerForm) {
+    this.setState({playerObject: playerForm});
+  }
+
+  handleMissionFormChange(missionForm) {
+    this.setState({missionObject: missionForm});
+  }
+
+  handleRequirementFormChange(requirementForm) {
+    this.setState({requirementObject: requirementForm});
   }
 
   continue() {
@@ -76,6 +89,16 @@ class PostForm extends React.Component{
     });
   }
 
+  renderStepActions(stepNumber) {
+    return [<RaisedButton
+                  key={0}
+                  label={stepNumber === 3 ? "Finish" : "Continue"}
+                  primary={true}
+                  onClick={this.continue.bind(this)}
+                />,
+              <FlatButton key={1} label="Cancel" onClick={this.state.handleClose} />];
+  }
+
   render() {
     return (
       <Stepper
@@ -83,38 +106,23 @@ class PostForm extends React.Component{
         activeStep={this.state.activeStep}
         onStepHeaderTouch={this.selectStep.bind(this)}
         updateCompletedStatus={this.updateCompletedSteps.bind(this)}
-        createIcon={this.createIcon}
-        containerStyle={{padding: 24, height: 'auto'}}
+        createIcon={this.renderStepIcon}
+        containerStyle={{paddingLeft: 30, paddingTop: 6, height: 'auto'}}
       >
         <Step
           orderStepLabel="1"
           stepLabel="user details"
-          actions={[
-            <RaisedButton
-              key={0}
-              label="Continue"
-              primary={true}
-              onClick={this.continue.bind(this)}
-            />,
-            <FlatButton key={1} label="Cancel" />,
-          ]}
+          actions={this.renderStepActions(1)}
         >
           <PlayerFields
             appData={this.state.appData}
+            onChange={this.handlePlayerFormChange.bind(this)}
           />
         </Step>
         <Step
           orderStepLabel="2"
           stepLabel="mission details"
-          actions={[
-            <RaisedButton
-              key={0}
-              label="Continue"
-              primary={true}
-              onClick={this.continue.bind(this)}
-            />,
-            <FlatButton key={1} label="Cancel" />,
-          ]}
+          actions={this.renderStepActions(2)}
         >
           <MissionFields
             missions={this.state.appData.missions}
@@ -123,15 +131,7 @@ class PostForm extends React.Component{
         <Step
           orderStepLabel="3"
           stepLabel="party details"
-          actions={[
-            <RaisedButton
-              key={0}
-              label="Finish"
-              primary={true}
-              onClick={this.continue.bind(this)}
-            />,
-            <FlatButton key={1} label="Cancel" />,
-          ]}
+          actions={this.renderStepActions(3)}
         >
           <RequirementFields
             appData={this.state.appData}

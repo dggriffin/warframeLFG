@@ -7,19 +7,21 @@ class RegionSelect extends React.Component{
     super(props);
     this.state = {
         regions: props.regions,
-        value: null
+        value: null,
+        onChange: props.onChange
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-        regions: nextProps.regions
+        regions: nextProps.regions,
+        onChange: nextProps.onChange
     });
   }
 
   handleChange (event, index, value) {
     this.setState({value});
-    //this.state.selectHandler(value);
+    this.state.onChange(value);
   }
 
   renderMenuItems(){

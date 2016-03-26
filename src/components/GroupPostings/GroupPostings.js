@@ -24,13 +24,9 @@ class GroupPostings extends React.Component{
     this.setState({postFormOpen: true});
   }
 
-  handleClose(){
-    this.setState({postFormOpen: false});
-  }
-
   renderPosts(){
     return this.state.appData.postings.map((post) => {
-      return <GroupPost post={post}/>
+      return <GroupPost post={post} appData={this.state.appData}/>
     });
   }
 
@@ -45,7 +41,7 @@ class GroupPostings extends React.Component{
       <PostFormModal
           appData={this.state.appData}
           open={this.state.postFormOpen}
-          handleClose={this.handleClose.bind(this)}/>
+      />
       </div>
     );
   }

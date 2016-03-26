@@ -10,46 +10,31 @@ class PostFormModal extends React.Component{
     this.state = {
         appData: props.appData,
         open: false,
-        handleClose: () => {}
     };
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
       appData: nextProps.appData,
       open: nextProps.open,
-      handleClose: nextProps.handleClose
     });
   }
 
-  getModalActions(){
-    return [
-          <FlatButton
-            label="Cancel"
-            secondary={true}
-            onClick={this.state.handleClose.bind(this)}
-            />
-          ,
-          <FlatButton
-            label="Submit"
-            primary={true}
-            keyboardFocused={true}
-            onClick={this.state.handleClose.bind(this)}
-            />
-        ];
+  handleClose(){
+    this.setState({open: false});
   }
 
   render() {
     return (
       <div>
         <Dialog
-          bodyStyle={{padding: "0 !important"}}
+          bodyStyle={{padding: 0}}
           modal={false}
-          contentStyle={{maxWidth:680}}
+          contentStyle={{maxWidth:660}}
           open={this.state.open}
           actionsContainerClassName={""}
-          onRequestClose={this.state.handleClose.bind(this)}
+          onRequestClose={this.handleClose.bind(this)}
         >
-          <PostForm appData={this.state.appData}/>
+          <PostForm appData={this.state.appData} handleClose={this.handleClose.bind(this)}/>
         </Dialog>
       </div>
     );

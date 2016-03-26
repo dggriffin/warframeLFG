@@ -7,19 +7,21 @@ class PlatformSelect extends React.Component{
     super(props);
     this.state = {
         platforms: props.platforms,
-        value: null
+        value: null,
+        onChange: props.onChange
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-        regions: nextProps.platforms
+        regions: nextProps.platforms,
+        onChange: nextProps.onChange
     });
   }
 
   handleChange (event, index, value) {
     this.setState({value});
-    //this.state.selectHandler(value);
+    this.state.onChange(value);
   }
 
   renderMenuItems(){

@@ -51,10 +51,22 @@ class AppComponent extends React.Component {
           </div>
         </div>
         <Paper zDepth={1} rounded={false}>
-          <div className="">
+          <div className="content-div">
             {this.state.loading ? <div className="center"> <CircularProgress size={2} /> </div> : <GroupPostings appData={this.state.appData} />}
           </div>
         </Paper>
+        <div className="row footer-div">
+          <div className="col s6">
+            <div className="center">
+              Twitter and Stuff
+            </div>
+          </div>
+          <div className="col s6">
+              Digital Extreme Ltd, Warframe and the logo Warframe are registered trademarks.
+              All rights are reserved worldwide. This site has no official link with Digital Extremes Ltd or Warframe.
+              All artwork, screenshots, characters or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of Digital Extreme Ltd.
+          </div>
+        </div>
       </div>
     )
   }
