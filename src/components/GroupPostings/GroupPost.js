@@ -21,7 +21,7 @@ class GroupPost extends React.Component{
   componentWillReceiveProps(nextProps) {
     this.setState({
       post : nextProps.post,
-      appData: props.appData
+      appData: nextProps.appData
     });
   }
 
@@ -54,8 +54,16 @@ class GroupPost extends React.Component{
   }
 
   renderHaveWarframes() {
-    debugger;
     return this.state.post.haveWarframes.map((warframe) => {
+      if (this.state.appData.warframes[warframe.name].image) {
+        return <img className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+      }
+    }, this);
+  }
+
+  renderNeedWarframes() {
+    debugger;
+    return this.state.post.needWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
         return <img className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
@@ -67,19 +75,28 @@ class GroupPost extends React.Component{
       <Paper>
         <ListItem>
           <div className="post-title-div">
-            <span className="post-title cyan-text">{this.state.post.mission.name}</span>
-            <span className="post-title grey-text">{this.state.post.mission.type}</span>
-            <span className="post-title grey-text">{this.state.post.mission.tier}</span>
-            <span className="post-time grey-text">{this.getElapsedTime() + " ago"}</span>
+            <span className="cyan-text">{this.state.post.creator}</span>
+            <span className="pink-text">{this.state.post.mission.name +
+                " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
+            <span className="grey-text">{this.getElapsedTime() + " ago"}</span>
           </div>
           <div className="post-content-div">
-            <span className="pink-text">Posted by: {this.state.post.creator}</span>
-            <div className="have-warframe-div">
-              {this.renderHaveWarframes()}
+            <div className="post-region-div">
+              <span className="grey-text">{this.state.post.region}</span>
+              <span className="grey-text">{this.state.post.platform}</span>
             </div>
-            <div className="need-warframe-div">
-              {this.renderHaveWarframes()}
+            <span className="grey-text post-comment">{this.state.post.mission.comment}</span>
+          </div>
+          <div className="post-footer-div">
+            <div className="post-spots">
+              <span className="grey-text">{this.state.post.spotsLeft + " open spots"}</span>
             </div>
+              <div className="have-warframe-div">
+                {this.renderHaveWarframes()}
+              </div>
+              <div className="need-warframe-div">
+                {this.renderHaveWarframes()}
+              </div>
           </div>
         </ListItem>
       </Paper>

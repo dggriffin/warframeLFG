@@ -19,14 +19,16 @@ class GroupPostingsToolbar extends React.Component{
       appData: props.appData,
       onCreatePost: props.onCreatePost,
       missionFilter: '1',
-      advancedToggle: false
+      advancedToggle: false,
+      onChange: props.onChange
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       onCreatePost: nextProps.onCreatePost,
-      appData: nextProps.appData
+      appData: nextProps.appData,
+      onChange: nextProps.onChange
     });
   }
 
@@ -38,10 +40,10 @@ class GroupPostingsToolbar extends React.Component{
 
   handleChange(event, index, value){
     this.setState({missionFilter: value});
+    this.state.onChange({name: value});
   }
 
   handleToggle(event, index, value){
-    debugger;
     this.setState({advancedToggle: value});
   }
 

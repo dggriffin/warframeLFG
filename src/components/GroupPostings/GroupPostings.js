@@ -5,13 +5,26 @@ import List from 'material-ui/lib/lists/list';
 import Divider from 'material-ui/lib/divider';
 import GroupPost from './GroupPost';
 
+import Rebase from 're-base';
+const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
+
+
 class GroupPostings extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       appData: props.appData,
-      postFormOpen: false
+      postFormOpen: false,
+      posts: []
     };
+  }
+
+  componentDidMount(){
+    this.ref = base.syncState(`postings`, {
+      context: this,
+      state: 'posts',
+      asArray: true
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,15 +38,40 @@ class GroupPostings extends React.Component{
   }
 
   renderPosts(){
-    return this.state.appData.postings.map((post) => {
+    return this.state.posts.map((post) => {
       return <GroupPost post={post} appData={this.state.appData}/>
     });
+  }
+
+  handleFilterChange(filter) {
+    base.removeBinding(this.ref);
+
+    if (filter.name === "1") {
+      this.ref = base.syncState(`postings`, {
+        context: this,
+        state: 'posts',
+        asArray: true
+      });
+    } else {
+      this.ref = base.syncState(`postings`, {
+        context: this,
+        state: 'posts',
+        asArray: true,
+        queries: {
+          orderByChild: 'mission/name',
+          equalTo: filter.name
+        }
+      });
+    }
   }
 
   render() {
     return (
       <div className="group-posting container">
-        <GroupPostingsToolbar appData={this.state.appData} onCreatePost={this.handleCreate.bind(this)}/>
+        <GroupPostingsToolbar
+          onChange={this.handleFilterChange.bind(this)}
+          appData={this.state.appData}
+          onCreatePost={this.handleCreate.bind(this)}/>
         <Divider/>
         <List>
           {this.renderPosts()}

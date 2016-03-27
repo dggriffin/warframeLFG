@@ -47,42 +47,63 @@ h1,h2,h3,h4 {
   padding-top: 2.5em;
   padding-bottom: 5em;
 }
-
 .post-title-div {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-}
-
-.post-title {
-  margin-right: .5em;
-}
-
-.post-time {
-  margin-left: auto;
+  justify-content: space-between;
+  margin-bottom: .5em;
 }
 
 .post-content-div {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  justify-content: flex-start;
+  margin-bottom: 1em;
 }
-.step-content {
-  padding: 24px;
+
+.post-region-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.post-footer-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-comment {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-spots {
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+}
+
+.post-warframe-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.have-warframe-div {
+  width: auto;
+}
+
+.need-warframe-div {
+  width: auto;
 }
 
 .warframe-img {
   /*border-radius: 1200px;
   */
-  width: 100px;
+  width: 4em;
 }
 
-.have-warframe-div {
-  margin-left: auto;
-  width: auto;
-}
-
-.need-warframe-div {
-  margin-right: auto;
-  width: auto;
+.step-content {
+  padding: 24px;
 }
