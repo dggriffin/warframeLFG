@@ -8,6 +8,8 @@ import GroupPost from './GroupPost';
 import Rebase from 're-base';
 const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
 
+import _ from 'underscore';
+
 
 class GroupPostings extends React.Component{
   constructor(props) {
@@ -37,8 +39,9 @@ class GroupPostings extends React.Component{
     this.setState({postFormOpen: true});
   }
 
-  renderPosts(){
-    return this.state.posts.map((post) => {
+  renderPosts() {
+    var posts = this.state.filteredPosts ? this.state.filteredPosts : this.state.posts;
+    return posts.map((post) => {
       return <GroupPost post={post} appData={this.state.appData}/>
     });
   }
@@ -46,11 +49,14 @@ class GroupPostings extends React.Component{
   handleFilterChange(filter) {
     base.removeBinding(this.ref);
 
-    if (filter.name === "1") {
+    if (filter.mission === "1") {
       this.ref = base.syncState(`postings`, {
         context: this,
         state: 'posts',
-        asArray: true
+        asArray: true,
+        then(){
+          this.handleClientFilters(filter);
+        }
       });
     } else {
       this.ref = base.syncState(`postings`, {
@@ -59,10 +65,23 @@ class GroupPostings extends React.Component{
         asArray: true,
         queries: {
           orderByChild: 'mission/name',
-          equalTo: filter.name
+          equalTo: filter.mission
+        },
+        then(){
+          this.handleClientFilters(filter);
         }
       });
     }
+  }
+
+  handleClientFilters(filter) {
+    debugger;
+    let unfilteredPosts = this.state.posts;
+    let filteredPosts =  _.filter(unfilteredPosts, (post) => {
+      return (filter.platform === "1" || post.platform === filter.platform) &&
+      (filter.region === "1" || post.region === filter.region);
+    });
+    this.setState({filteredPosts: filteredPosts});
   }
 
   render() {
