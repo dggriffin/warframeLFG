@@ -59,7 +59,7 @@ class GroupPost extends React.Component{
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <Avatar size={60} backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar size={60} style={{border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
@@ -68,14 +68,14 @@ class GroupPost extends React.Component{
     debugger;
     return this.state.post.needWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <img className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar size={60} style={{border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
 
   render() {
     return (
-      <Paper>
+      <Paper className="group-post">
         <ListItem>
 
           <div className="post-title-div">
@@ -106,7 +106,7 @@ class GroupPost extends React.Component{
               </div>
               <span className="post-need-warframes-label pink-text thin">need</span>
               <div className="need-warframe-div">
-                {this.renderHaveWarframes()}
+                {this.renderNeedWarframes()}
               </div>
             </div>
           </div>

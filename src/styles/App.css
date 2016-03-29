@@ -76,6 +76,10 @@ h1,h2,h3,h4 {
   padding-top: 2.5em;
   padding-bottom: 5em;
 }
+
+.group-post {
+  margin-bottom: 1em;
+}
 .post-title-div {
   display: flex;
   flex-direction: row;

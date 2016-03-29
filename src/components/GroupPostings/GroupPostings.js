@@ -44,7 +44,7 @@ class GroupPostings extends React.Component{
     var postMap = posts.map((post) => {
       return <GroupPost post={post} appData={this.state.appData}/>
     });
-    return postMap.length ? postMap : <div className='center grey-text' style={{marginTop: '3em'}}>Sorry! There are no results :( </div>
+    return postMap.length ? postMap.reverse() : <div className='center grey-text' style={{marginTop: '3em'}}>Sorry! There are no results :( </div>
   }
 
   handleFilterChange(filter) {
