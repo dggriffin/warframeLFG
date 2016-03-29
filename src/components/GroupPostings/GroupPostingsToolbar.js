@@ -76,38 +76,38 @@ class GroupPostingsToolbar extends React.Component{
       <div className="group-posting-toolbar">
         <div className="group-posting-toolbar-left">
           <SelectField
-            style={{width: 150}}
             autoWidth={true}
+            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.missionFilter}
             onChange={this.handleMissionChange.bind(this)}
             floatingLabelText="mission"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any Missions" />
+              <MenuItem value="1" primaryText="Any" />
               {this.renderMissionMenuItems()}
           </SelectField>
 
           <SelectField
-            style={{width: 150, paddingRight: 0}}
             autoWidth={true}
+            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.platformFilter}
             onChange={this.handlePlatformChange.bind(this)}
             floatingLabelText="platform"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any Platforms" />
+              <MenuItem value="1" primaryText="Any" />
               {this.renderPlatformMenuItems()}
           </SelectField>
 
           <SelectField
-            style={{width: 150}}
             autoWidth={true}
+            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.regionFilter}
             onChange={this.handleRegionChange.bind(this)}
             floatingLabelText="region"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any Regions" />
+              <MenuItem value="1" primaryText="Any" />
               {this.renderRegionMenuItems()}
           </SelectField>
         </div>
