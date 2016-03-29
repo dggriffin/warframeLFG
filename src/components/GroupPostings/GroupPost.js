@@ -7,6 +7,9 @@ import Paper from 'material-ui/lib/paper';
 
 import Rebase from 're-base';
 const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
+import Avatar from 'material-ui/lib/avatar';
+import Divider from 'material-ui/lib/divider';
+
 
 
 class GroupPost extends React.Component{
@@ -56,7 +59,7 @@ class GroupPost extends React.Component{
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <img className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar size={60} backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
@@ -74,30 +77,40 @@ class GroupPost extends React.Component{
     return (
       <Paper>
         <ListItem>
+
           <div className="post-title-div">
-            <span className="cyan-text">{this.state.post.creator}</span>
-            <span className="pink-text">{this.state.post.mission.name +
-                " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
-            <span className="grey-text">{this.getElapsedTime() + " ago"}</span>
+            <div ><span className="post-title cyan white-text">{this.state.post.creator}</span></div>
+            <div>
+              <span className="post-creator cyan-text thin">{this.state.post.mission.name +
+                  " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
+                <div className="grey-text post-comment thin">{this.state.post.mission.comment}</div>
+            </div>
+            <span className="grey-text thin">{this.getElapsedTime() + " ago"}</span>
           </div>
+
           <div className="post-content-div">
             <div className="post-region-div">
-              <span className="grey-text">{this.state.post.region}</span>
-              <span className="grey-text">{this.state.post.platform}</span>
+              <span className="grey-text thin">{this.state.post.region}</span>
+              <span className="grey-text thin">{this.state.post.platform}</span>
             </div>
-            <span className="grey-text post-comment">{this.state.post.mission.comment}</span>
           </div>
+
           <div className="post-footer-div">
             <div className="post-spots">
-              <span className="grey-text">{this.state.post.spotsLeft + " open spots"}</span>
+              <span className="grey-text thin">{this.state.post.spotsLeft + " open spots"}</span>
             </div>
+            <div className="post-warframes">
+              <span className="post-have-warframes-label pink-text thin">have</span>
               <div className="have-warframe-div">
                 {this.renderHaveWarframes()}
               </div>
+              <span className="post-need-warframes-label pink-text thin">need</span>
               <div className="need-warframe-div">
                 {this.renderHaveWarframes()}
               </div>
+            </div>
           </div>
+
         </ListItem>
       </Paper>
     );

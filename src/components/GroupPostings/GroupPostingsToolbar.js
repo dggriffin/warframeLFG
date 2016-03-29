@@ -7,6 +7,7 @@ import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
 import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 import Toggle from 'material-ui/lib/toggle';
+import SelectField from 'material-ui/lib/select-field';
 
 import PlatformSelect from '../PostFormModal/PlayerFields/PlatformSelect';
 import RegionSelect from '../PostFormModal/PlayerFields/RegionSelect';
@@ -72,39 +73,63 @@ class GroupPostingsToolbar extends React.Component{
 
   render() {
     return (
-      <Toolbar>
-        <ToolbarGroup firstChild={true} float="left">
-          <DropDownMenu value={this.state.missionFilter} onChange={this.handleMissionChange.bind(this)}>
-            <MenuItem value="1" primaryText="Any Missions" />
-            {this.renderMissionMenuItems()}
-          </DropDownMenu>
+      <div className="group-posting-toolbar">
+        <div className="group-posting-toolbar-left">
+          <SelectField
+            style={{width: 150}}
+            autoWidth={true}
+            value={this.state.missionFilter}
+            onChange={this.handleMissionChange.bind(this)}
+            floatingLabelText="mission"
+            floatingLabelStyle={{fontSize: "1.2em"}}
+            >
+              <MenuItem value="1" primaryText="Any Missions" />
+              {this.renderMissionMenuItems()}
+          </SelectField>
 
-          <DropDownMenu value={this.state.platformFilter} onChange={this.handlePlatformChange.bind(this)}>
-            <MenuItem value="1" primaryText="Any Platforms" />
-            {this.renderPlatformMenuItems()}
-          </DropDownMenu>
+          <SelectField
+            style={{width: 150, paddingRight: 0}}
+            autoWidth={true}
+            value={this.state.platformFilter}
+            onChange={this.handlePlatformChange.bind(this)}
+            floatingLabelText="platform"
+            floatingLabelStyle={{fontSize: "1.2em"}}
+            >
+              <MenuItem value="1" primaryText="Any Platforms" />
+              {this.renderPlatformMenuItems()}
+          </SelectField>
 
-          <DropDownMenu value={this.state.regionFilter} onChange={this.handleRegionChange.bind(this)}>
-            <MenuItem value="1" primaryText="Any Regions" />
-            {this.renderRegionMenuItems()}
-          </DropDownMenu>
+          <SelectField
+            style={{width: 150}}
+            autoWidth={true}
+            value={this.state.regionFilter}
+            onChange={this.handleRegionChange.bind(this)}
+            floatingLabelText="region"
+            floatingLabelStyle={{fontSize: "1.2em"}}
+            >
+              <MenuItem value="1" primaryText="Any Regions" />
+              {this.renderRegionMenuItems()}
+          </SelectField>
+        </div>
 
-        </ToolbarGroup>
-        <ToolbarGroup float="right">
+        <div className="group-posting-toolbar-right">
           <div style={{display: 'flex', alignItems: 'center'}}>
             <Toggle
               toggled={this.state.advancedToggle}
               onToggle={this.handleToggle.bind(this)}
+              className="grey-text"
               label="Advanced"
             />
           </div>
-          <ToolbarSeparator />
-          <RaisedButton label="Create Group"
+
+          <ToolbarSeparator style={{top: 0, marginRight: 25, height: 40}}/>
+
+          <RaisedButton label="Post"
             primary={true}
             onClick={this.state.onCreatePost}
           />
-        </ToolbarGroup>
-      </Toolbar>
+        </div>
+      </div>
     );
   }
 }

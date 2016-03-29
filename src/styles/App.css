@@ -43,6 +43,35 @@ h1,h2,h3,h4 {
   padding-top: 2em;
   font-size: .7em;
 }
+
+.group-posting-toolbar{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(232, 232, 232);
+  height: 5em;
+  padding: 1em;
+  align-items: center;
+}
+
+.group-posting-toolbar-right{
+  display: flex;
+  flex: 3;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.group-posting-toolbar-left{
+  display: flex;
+  flex: 5.5;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+
 .group-posting {
   padding-top: 2.5em;
   padding-bottom: 5em;
@@ -51,14 +80,12 @@ h1,h2,h3,h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: .5em;
 }
 
 .post-content-div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-bottom: 1em;
 }
 
 .post-region-div {
@@ -73,6 +100,17 @@ h1,h2,h3,h4 {
   justify-content: space-between;
 }
 
+.post-creator {
+  font-size: 1.5em;
+}
+
+.post-title {
+  font-size: 1.5em;
+  background-color: cyan;
+  padding: 0 0.2em 0 0.2em;
+  border-radius: .2em;
+}
+
 .post-comment {
   margin-left: auto;
   margin-right: auto;
@@ -82,6 +120,22 @@ h1,h2,h3,h4 {
  display: flex;
  flex-direction: column;
  justify-content: flex-end;
+}
+
+.post-warframes {
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ align-items: flex-end;;
+}
+
+.post-have-warframes-label {
+  padding-right: .5em;
+}
+
+.post-need-warframes-label {
+  padding-right: .5em;
+  padding-left: 2em;
 }
 
 .post-warframe-div {
@@ -101,7 +155,8 @@ h1,h2,h3,h4 {
 .warframe-img {
   /*border-radius: 1200px;
   */
-  width: 4em;
+  color: white;
+  background-color: white
 }
 
 .step-content {

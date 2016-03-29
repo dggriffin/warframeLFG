@@ -41,9 +41,10 @@ class GroupPostings extends React.Component{
 
   renderPosts() {
     var posts = this.state.filteredPosts ? this.state.filteredPosts : this.state.posts;
-    return posts.map((post) => {
+    var postMap = posts.map((post) => {
       return <GroupPost post={post} appData={this.state.appData}/>
     });
+    return postMap.length ? postMap : <div className='center grey-text' style={{marginTop: '3em'}}>Sorry! There are no results :( </div>
   }
 
   handleFilterChange(filter) {
@@ -75,13 +76,37 @@ class GroupPostings extends React.Component{
   }
 
   handleClientFilters(filter) {
-    debugger;
-    let unfilteredPosts = this.state.posts;
-    let filteredPosts =  _.filter(unfilteredPosts, (post) => {
-      return (filter.platform === "1" || post.platform === filter.platform) &&
-      (filter.region === "1" || post.region === filter.region);
-    });
-    this.setState({filteredPosts: filteredPosts});
+    if (filter.mission === "1") {
+      base.fetch('postings', {
+        context: this,
+        asArray: true,
+        then (data) {
+          let unfilteredPosts = data;
+          let filteredPosts =  _.filter(unfilteredPosts, (post) => {
+            return (filter.platform === "1" || post.platform === filter.platform) &&
+            (filter.region === "1" || post.region === filter.region);
+          });
+          this.setState({filteredPosts: filteredPosts});
+        }
+      });
+    } else {
+      base.fetch('postings', {
+        context: this,
+        asArray: true,
+        queries: {
+          orderByChild: 'mission/name',
+          equalTo: filter.mission
+        },
+        then (data) {
+          let unfilteredPosts = data;
+          let filteredPosts =  _.filter(unfilteredPosts, (post) => {
+            return (filter.platform === "1" || post.platform === filter.platform) &&
+            (filter.region === "1" || post.region === filter.region);
+          });
+          this.setState({filteredPosts: filteredPosts});
+        }
+      });
+    }
   }
 
   render() {
