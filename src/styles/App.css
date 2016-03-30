@@ -80,85 +80,81 @@ h1,h2,h3,h4 {
 .group-post {
   margin-bottom: 1em;
 }
-.post-title-div {
+
+.group-post-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.post-content-div {
+.group-post-row-nowrap {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-.post-region-div {
+.group-post-row-master {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.group-post-row-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.group-post-column {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.group-post-column-meta{
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
-.post-footer-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.post-creator {
-  font-size: 1.5em;
-}
-
-.post-title {
-  font-size: 1.5em;
+.group-post-title {
+  font-size: 1em;
   background-color: cyan;
   padding: 0 0.2em 0 0.2em;
   border-radius: .2em;
 }
 
-.post-comment {
-  margin-left: auto;
-  margin-right: auto;
+.group-post-have-wf {
+  background-color: pink;
+  border-radius: 3em;
+  padding: .5em;
 }
 
-.post-spots {
- display: flex;
- flex-direction: column;
- justify-content: flex-end;
-}
-
-.post-warframes {
- display: flex;
- flex-direction: row;
- justify-content: flex-end;
- align-items: flex-end;;
-}
-
-.post-have-warframes-label {
+.group-post-all-wf {
+  background-color: #DEDEDE;
+  border-radius: 3.0em;
   padding-right: .5em;
 }
 
-.post-need-warframes-label {
-  padding-right: .5em;
-  padding-left: 2em;
-}
-
-.post-warframe-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.have-warframe-div {
-  width: auto;
-}
-
-.need-warframe-div {
-  width: auto;
+.group-post-all-wf-wrapper {
+  flex-grow: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .warframe-img {
-  /*border-radius: 1200px;
-  */
   color: white;
   background-color: white
 }

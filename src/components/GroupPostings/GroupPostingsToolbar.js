@@ -77,7 +77,7 @@ class GroupPostingsToolbar extends React.Component{
         <div className="group-posting-toolbar-left">
           <SelectField
             autoWidth={true}
-            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.missionFilter}
             onChange={this.handleMissionChange.bind(this)}
             floatingLabelText="mission"
@@ -89,7 +89,7 @@ class GroupPostingsToolbar extends React.Component{
 
           <SelectField
             autoWidth={true}
-            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.platformFilter}
             onChange={this.handlePlatformChange.bind(this)}
             floatingLabelText="platform"
@@ -101,7 +101,7 @@ class GroupPostingsToolbar extends React.Component{
 
           <SelectField
             autoWidth={true}
-            style={{fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
             value={this.state.regionFilter}
             onChange={this.handleRegionChange.bind(this)}
             floatingLabelText="region"

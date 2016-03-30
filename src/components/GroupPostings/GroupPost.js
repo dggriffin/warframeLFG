@@ -1,7 +1,4 @@
 import React from 'react';
-var {
-  Image
-} = React;
 import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
 
@@ -59,16 +56,15 @@ class GroupPost extends React.Component{
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <Avatar size={60} style={{border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar style={{height: '3.2em', width: '3.2em', border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
 
   renderNeedWarframes() {
-    debugger;
     return this.state.post.needWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <Avatar size={60} style={{border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar style={{opacity: .8, height: '3em', width: '3em', border: "2.5px dotted grey"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
@@ -77,40 +73,40 @@ class GroupPost extends React.Component{
     return (
       <Paper className="group-post">
         <ListItem>
+          <div className="group-post-row-master">
 
-          <div className="post-title-div">
-            <div ><span className="post-title cyan white-text">{this.state.post.creator}</span></div>
-            <div>
-              <span className="post-creator cyan-text thin">{this.state.post.mission.name +
-                  " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
-                <div className="grey-text post-comment thin">{this.state.post.mission.comment}</div>
-            </div>
-            <span className="grey-text thin">{this.getElapsedTime() + " ago"}</span>
-          </div>
+            <div className="group-post-row-around">
 
-          <div className="post-content-div">
-            <div className="post-region-div">
-              <span className="grey-text thin">{this.state.post.region}</span>
-              <span className="grey-text thin">{this.state.post.platform}</span>
-            </div>
-          </div>
-
-          <div className="post-footer-div">
-            <div className="post-spots">
-              <span className="grey-text thin">{this.state.post.spotsLeft + " open spots"}</span>
-            </div>
-            <div className="post-warframes">
-              <span className="post-have-warframes-label pink-text thin">have</span>
-              <div className="have-warframe-div">
-                {this.renderHaveWarframes()}
+              <div className="group-post-column">
+                <div style={{paddingBottom: 20}}><span className="group-post-title cyan white-text">{this.state.post.creator}</span></div>
+                <span className="cyan-text thin">{this.state.post.mission.name +
+                    " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
+                  <div style={{paddingBottom: 20}} className="grey-text thin">{this.state.post.mission.comment}</div>
+                <div className="group-post-column">
+                  <span className="grey-text thin">{this.state.post.region}</span>
+                  <span className="grey-text thin">{this.state.post.platform}</span>
+                </div>
               </div>
-              <span className="post-need-warframes-label pink-text thin">need</span>
-              <div className="need-warframe-div">
-                {this.renderNeedWarframes()}
-              </div>
-            </div>
-          </div>
 
+              <div className="group-post-all-wf-wrapper">
+                <div style={{display: 'inline-block'}}>
+                  <div className="group-post-row-nowrap group-post-all-wf">
+                    <div className="group-post-have-wf">
+                      {this.renderHaveWarframes()}
+                    </div>
+                    {this.renderNeedWarframes()}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div className="group-post-column-meta">
+              <span className="grey-text thin">{this.getElapsedTime() + " ago"}</span>
+              <span className="grey-text thin">{this.state.post.spotsLeft + " open spot(s)"}</span>
+            </div>
+
+        </div>
         </ListItem>
       </Paper>
     );
