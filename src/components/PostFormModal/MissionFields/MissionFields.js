@@ -1,5 +1,7 @@
 import React from 'react';
 import MissionTypeSelect from './MissionTypeSelect';
+import MissionTierSelect from './MissionTierSelect';
+import MissionQuestionSelect from './MissionQuestionSelect';
 import MissionSelect from './MissionSelect';
 
 class MissionFields extends React.Component{
@@ -23,8 +25,15 @@ class MissionFields extends React.Component{
     });
   }
 
-  renderMissionDetail(){
-    return this.state.selectedMission ? <div className="col s6"> <MissionTypeSelect className="col s6" mission={this.state.selectedMission}/></div> : <div></div>
+  renderMissionDetail() {
+    if (!this.state.selectedMission) {
+      return null;
+    }
+    return Object.keys(this.state.selectedMission).map((key) => {
+      if (this.state.selectedMission[key] instanceof Array) {
+        return <MissionQuestionSelect  key={key + this.state.selectedMission["name"]} keyName={key} valueList={this.state.selectedMission[key]}/>
+      }
+    });
   }
 
   render() {
@@ -36,7 +45,9 @@ class MissionFields extends React.Component{
                 selectHandler={this.handleMissionSelect.bind(this)}
               />
           </div>
-          {this.renderMissionDetail()}
+          <div className="col s6">
+            {this.renderMissionDetail()}
+          </div>
         </div>
     );
   }

@@ -83,7 +83,7 @@ class GroupPostingsToolbar extends React.Component{
             floatingLabelText="mission"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any" />
+              <MenuItem value="1" primaryText="any mission" />
               {this.renderMissionMenuItems()}
           </SelectField>
 
@@ -95,7 +95,7 @@ class GroupPostingsToolbar extends React.Component{
             floatingLabelText="platform"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any" />
+              <MenuItem value="1" primaryText="any platform" />
               {this.renderPlatformMenuItems()}
           </SelectField>
 
@@ -107,7 +107,7 @@ class GroupPostingsToolbar extends React.Component{
             floatingLabelText="region"
             floatingLabelStyle={{fontSize: "1.2em"}}
             >
-              <MenuItem value="1" primaryText="Any" />
+              <MenuItem value="1" primaryText="any region" />
               {this.renderRegionMenuItems()}
           </SelectField>
         </div>

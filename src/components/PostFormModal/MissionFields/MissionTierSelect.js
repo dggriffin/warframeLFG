@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-class MissionTypeSelect extends React.Component{
+class MissionTierSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
@@ -23,10 +23,7 @@ class MissionTypeSelect extends React.Component{
   }
 
   renderMenuItems(){
-    if (!this.state.mission) {
-      return null;
-    }
-    return this.state.mission.type.map((type) => {
+    return this.state.mission.tier.map((type) => {
       return <MenuItem key={type} value={type} primaryText={type} />
     });
   }
@@ -35,11 +32,9 @@ class MissionTypeSelect extends React.Component{
     return (
       <SelectField
         value={this.state.value}
-        disabled={!this.state.mission}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText="mission type"
+        floatingLabelText="mission tier"
         floatingLabelStyle={{fontSize: "1.2em"}}
-        style={this.state.mission ? {opacity: 1} : {opacity: .3}}
       >
         {this.renderMenuItems()}
       </SelectField>
@@ -47,4 +42,4 @@ class MissionTypeSelect extends React.Component{
   }
 }
 
-module.exports = MissionTypeSelect;
+module.exports = MissionTierSelect;

@@ -2,12 +2,13 @@ import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-class MissionTypeSelect extends React.Component{
+class MissionQuestionSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-        mission: props.mission,
-        value: null
+        keyName: props.keyName,
+        valueList: props.valueList,
+        value: null,
     };
   }
 
@@ -23,11 +24,11 @@ class MissionTypeSelect extends React.Component{
   }
 
   renderMenuItems(){
-    if (!this.state.mission) {
+    if (!this.state.valueList) {
       return null;
     }
-    return this.state.mission.type.map((type) => {
-      return <MenuItem key={type} value={type} primaryText={type} />
+    return this.state.valueList.map((value) => {
+      return <MenuItem key={value} value={value} primaryText={value} />
     });
   }
 
@@ -35,11 +36,11 @@ class MissionTypeSelect extends React.Component{
     return (
       <SelectField
         value={this.state.value}
-        disabled={!this.state.mission}
+        disabled={!this.state.valueList}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText="mission type"
+        floatingLabelText={this.state.keyName}
         floatingLabelStyle={{fontSize: "1.2em"}}
-        style={this.state.mission ? {opacity: 1} : {opacity: .3}}
+        style={this.state.valueList ? {opacity: 1} : {opacity: .3}}
       >
         {this.renderMenuItems()}
       </SelectField>
@@ -47,4 +48,4 @@ class MissionTypeSelect extends React.Component{
   }
 }
 
-module.exports = MissionTypeSelect;
+module.exports = MissionQuestionSelect;

@@ -56,7 +56,7 @@ class GroupPost extends React.Component{
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <Avatar style={{height: '3.2em', width: '3.2em', border: "2.5px solid #e91e63"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar style={{height: '3.2em', width: '3.2em', border: "2.5px solid #4CAF50"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
@@ -64,7 +64,7 @@ class GroupPost extends React.Component{
   renderNeedWarframes() {
     return this.state.post.needWarframes.map((warframe) => {
       if (this.state.appData.warframes[warframe.name].image) {
-        return <Avatar style={{opacity: .8, height: '3em', width: '3em', border: "2.5px dotted grey"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: "2.5px dotted grey"}}backgroundColor={'#EDEDED'} className="warframe-img" src={this.state.appData.warframes[warframe.name].image}/>
       }
     }, this);
   }
@@ -83,8 +83,8 @@ class GroupPost extends React.Component{
                     " - " + this.state.post.mission.type + " " + this.state.post.mission.tier}</span>
                   <div style={{paddingBottom: 20}} className="grey-text thin">{this.state.post.mission.comment}</div>
                 <div className="group-post-column">
-                  <span className="grey-text thin">{this.state.post.region}</span>
                   <span className="grey-text thin">{this.state.post.platform}</span>
+                  <span className="grey-text thin">{this.state.post.region}</span>
                 </div>
               </div>
 
