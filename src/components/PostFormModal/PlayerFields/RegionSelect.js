@@ -34,6 +34,8 @@ class RegionSelect extends React.Component{
     return (
       <SelectField
         value={this.state.value}
+        autoWidth={true}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         onChange={this.handleChange.bind(this)}
         floatingLabelText="region"
         floatingLabelStyle={{fontSize: "1.2em"}}

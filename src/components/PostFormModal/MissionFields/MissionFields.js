@@ -3,6 +3,7 @@ import MissionTypeSelect from './MissionTypeSelect';
 import MissionTierSelect from './MissionTierSelect';
 import MissionQuestionSelect from './MissionQuestionSelect';
 import MissionSelect from './MissionSelect';
+import TextField from 'material-ui/lib/text-field';
 
 class MissionFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -29,7 +30,9 @@ class MissionFields extends React.Component{
     if (!this.state.selectedMission) {
       return null;
     }
-    return Object.keys(this.state.selectedMission).map((key) => {
+    //Reverse for non-alphabetic order..
+    let keys = Object.keys(this.state.selectedMission).reverse();
+    return keys.map((key) => {
       if (this.state.selectedMission[key] instanceof Array) {
         return <MissionQuestionSelect  key={key + this.state.selectedMission["name"]} keyName={key} valueList={this.state.selectedMission[key]}/>
       }
@@ -38,17 +41,29 @@ class MissionFields extends React.Component{
 
   render() {
     return (
-        <div className="row">
-          <div className="col s6">
-              <MissionSelect
-                missions={this.state.missions}
-                selectHandler={this.handleMissionSelect.bind(this)}
+      <div>
+          <div className="row">
+            <div className="col s6">
+                <MissionSelect
+                  missions={this.state.missions}
+                  selectHandler={this.handleMissionSelect.bind(this)}
+                />
+            </div>
+            <div className="col s6">
+              {this.renderMissionDetail()}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12">
+              <TextField
+                style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+                floatingLabelStyle={{fontSize: "1.2em"}}
+                floatingLabelText="comment"
+                multiLine={true}
               />
+            </div>
           </div>
-          <div className="col s6">
-            {this.renderMissionDetail()}
-          </div>
-        </div>
+      </div>
     );
   }
 }

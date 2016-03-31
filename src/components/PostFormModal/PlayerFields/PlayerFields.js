@@ -3,6 +3,7 @@ import TextField from 'material-ui/lib/text-field';
 import RegionSelect from './RegionSelect';
 import PlatformSelect from './PlatformSelect';
 import Divider from 'material-ui/lib/divider';
+import Checkbox from 'material-ui/lib/checkbox';
 
 class PlayerFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -44,6 +45,7 @@ class PlayerFields extends React.Component{
           <div className="col s6">
             <TextField
               floatingLabelText="username"
+              style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
               floatingLabelStyle={{fontSize: "1.2em"}}
               multiLine={true}
               onBlur={this.onChangeUsername.bind(this)}

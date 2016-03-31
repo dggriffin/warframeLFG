@@ -31,11 +31,13 @@ class NeedWarframesSelect extends React.Component{
   render() {
     return (
       <SelectField
+        autoWidth={true}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         value={this.state.value}
         maxHeight={250}
         onChange={this.handleChange.bind(this)}
         floatingLabelText="need warframe"
-        floatingLabelStyle={{fontSize: "1.2em"}}
+        floatingLabelStyle={{fontSize: "1.2em", overflow: 'hidden', display: 'inline-block'}}
       >
         {this.renderMenuItems()}
       </SelectField>

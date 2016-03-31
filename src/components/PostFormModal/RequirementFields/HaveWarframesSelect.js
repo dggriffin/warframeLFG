@@ -31,6 +31,8 @@ class HaveWarframesSelect extends React.Component{
   render() {
     return (
       <SelectField
+        autoWidth={true}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         value={this.state.value}
         maxHeight={250}
         onChange={this.handleChange.bind(this)}

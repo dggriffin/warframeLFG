@@ -33,6 +33,7 @@ class PostFormModal extends React.Component{
           open={this.state.open}
           actionsContainerClassName={""}
           onRequestClose={this.handleClose.bind(this)}
+          autoScrollBodyContent={true}
         >
           <PostForm appData={this.state.appData} handleClose={this.handleClose.bind(this)}/>
         </Dialog>

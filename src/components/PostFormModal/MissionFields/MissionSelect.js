@@ -26,6 +26,8 @@ class MissionSelect extends React.Component{
   render() {
     return (
       <SelectField
+        autoWidth={true}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         value={this.state.value}
         onChange={this.handleChange.bind(this)}
         floatingLabelText="mission"

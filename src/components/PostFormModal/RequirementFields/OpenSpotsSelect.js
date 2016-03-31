@@ -30,10 +30,12 @@ class OpenSpotsSelect extends React.Component{
   render() {
     return (
       <SelectField
+        autoWidth={true}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         value={this.state.value}
         maxHeight={250}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText="spots open"
+        floatingLabelText="spots"
         floatingLabelStyle={{fontSize: "1.2em"}}
       >
         <MenuItem key={1} value={1} primaryText={1} />

@@ -23,7 +23,7 @@ class MissionQuestionSelect extends React.Component{
     //this.state.selectHandler(value);
   }
 
-  renderMenuItems(){
+  renderMenuItems() {
     if (!this.state.valueList) {
       return null;
     }
@@ -35,12 +35,13 @@ class MissionQuestionSelect extends React.Component{
   render() {
     return (
       <SelectField
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+        autoWidth={true}
         value={this.state.value}
         disabled={!this.state.valueList}
         onChange={this.handleChange.bind(this)}
         floatingLabelText={this.state.keyName}
         floatingLabelStyle={{fontSize: "1.2em"}}
-        style={this.state.valueList ? {opacity: 1} : {opacity: .3}}
       >
         {this.renderMenuItems()}
       </SelectField>

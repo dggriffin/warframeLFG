@@ -33,7 +33,9 @@ class PlatformSelect extends React.Component{
   render() {
     return (
       <SelectField
+        autoWidth={true}
         value={this.state.value}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         onChange={this.handleChange.bind(this)}
         floatingLabelText="platform"
         floatingLabelStyle={{fontSize: "1.2em"}}

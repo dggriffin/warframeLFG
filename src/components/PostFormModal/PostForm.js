@@ -107,7 +107,7 @@ class PostForm extends React.Component{
         onStepHeaderTouch={this.selectStep.bind(this)}
         updateCompletedStatus={this.updateCompletedSteps.bind(this)}
         createIcon={this.renderStepIcon}
-        containerStyle={{paddingLeft: 30, paddingTop: 6, height: 'auto'}}
+        containerStyle={{paddingTop: 6, height: 'auto'}}
       >
         <Step
           orderStepLabel="1"
