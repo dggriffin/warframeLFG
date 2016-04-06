@@ -2,8 +2,7 @@ import React from 'react';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
 import Avatar from 'material-ui/lib/avatar';
-
-
+import styles from './GroupPost.scss';
 
 class GroupPost extends React.Component{
   constructor(props) {
@@ -67,27 +66,27 @@ class GroupPost extends React.Component{
 
   render() {
     return (
-      <Paper className='group-post'>
+      <Paper className={styles.groupPost}>
         <ListItem>
-          <div className='group-post-row-master'>
+          <div className={styles.rowMaster}>
 
-            <div className='group-post-row-around'>
+            <div className={styles.rowWrapper}>
 
-              <div className='group-post-column'>
-                <div style={{paddingBottom: 20}}><span className='group-post-title cyan white-text'>{this.state.post.creator}</span></div>
-                <span className='cyan-text thin'>{this.state.post.mission.name +
+              <div className={styles.column}>
+                <div style={{paddingBottom: 20}}><span className={styles.title}>{this.state.post.creator}</span></div>
+                <span className={styles.primaryText}>{this.state.post.mission.name +
                     ' - ' + this.state.post.mission.type + ' ' + this.state.post.mission.tier}</span>
-                  <div style={{paddingBottom: 20}} className='grey-text thin'>{this.state.post.mission.comment}</div>
-                <div className='group-post-column'>
-                  <span className='grey-text thin'>{this.state.post.platform}</span>
-                  <span className='grey-text thin'>{this.state.post.region}</span>
+                  <div style={{paddingBottom: 20}} className={styles.secondaryText}>{this.state.post.mission.comment}</div>
+                <div className={styles.column}>
+                  <span className={styles.secondaryText}>{this.state.post.platform}</span>
+                  <span className={styles.secondaryText}>{this.state.post.region}</span>
                 </div>
               </div>
 
-              <div className='group-post-all-wf-wrapper'>
+              <div className={styles.wfWrapper}>
                 <div style={{display: 'inline-block'}}>
-                  <div className='group-post-row-nowrap group-post-all-wf'>
-                    <div className='group-post-have-wf'>
+                  <div className={styles.wfAll}>
+                    <div className={styles.wfHave}>
                       {this.renderHaveWarframes()}
                     </div>
                     {this.renderNeedWarframes()}
@@ -97,9 +96,9 @@ class GroupPost extends React.Component{
 
             </div>
 
-            <div className='group-post-column-meta'>
-              <span className='grey-text thin'>{this.getElapsedTime() + ' ago'}</span>
-              <span className='grey-text thin'>{this.state.post.spotsLeft + ' open spot(s)'}</span>
+            <div className={styles.metaDataColumn}>
+              <span className={styles.secondaryText}>{this.getElapsedTime() + ' ago'}</span>
+              <span className={styles.secondaryText}>{this.state.post.spotsLeft + ' open spot(s)'}</span>
             </div>
 
         </div>

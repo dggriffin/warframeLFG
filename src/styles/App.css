@@ -25,8 +25,6 @@ h1,h2,h3,h4 {
   background: #666;
 }
 
-
-
 .group-posting-toolbar{
   display: flex;
   flex-direction: row;
@@ -60,87 +58,6 @@ h1,h2,h3,h4 {
   padding-bottom: 5em;
 }
 
-.group-post {
-  margin-bottom: 1em;
-}
-
-.group-post-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.group-post-row-nowrap {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.group-post-row-master {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: stretch;
-}
-
-.group-post-row-around {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  flex: 1 1 auto;
-}
-
-.group-post-column {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.group-post-column-meta{
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.group-post-title {
-  font-size: 1em;
-  background-color: cyan;
-  padding: 0 0.2em 0 0.2em;
-  border-radius: .2em;
-}
-
-.group-post-have-wf {
-  background-color: #C8E6C9;
-  border-radius: 3em;
-  padding: .5em;
-}
-
-.group-post-all-wf {
-  background-color: #DEDEDE;
-  border-radius: 3.0em;
-  padding-right: .5em;
-}
-
-.group-post-all-wf-wrapper {
-  flex-grow: 1;
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
-.warframe-img {
-  color: white;
-  background-color: white
-}
 
 .step-content {
   padding: 24px;

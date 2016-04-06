@@ -1,26 +1,41 @@
-// import Colors from 'material-ui/lib/styles/colors.js';
+// import {
+// cyan500, cyan700,
+// grey100, grey300, grey400, grey500,
+// pinkA200,
+// white, darkBlack, fullBlack
+// } from 'material-ui/lib/styles/colors';
 // import ColorManipulator from 'material-ui/lib/utils/color-manipulator';
-// import Spacing from 'material-ui/lib/styles/spacing';
-// import zIndex from 'material-ui/lib/styles/zIndex';
 //
-// console.log(Colors);
-//
-// export default {
-//   spacing: Spacing,
-//   zIndex: zIndex,
+// const lightBaseTheme = {
+//   spacing: {
+//     iconSize: 24,
+//     desktopGutter: 24,
+//     desktopGutterMore: 32,
+//     desktopGutterLess: 16,
+//     desktopGutterMini: 8,
+//     desktopKeylineIncrement: 64,
+//     desktopDropDownMenuItemHeight: 32,
+//     desktopDropDownMenuFontSize: 15,
+//     desktopLeftNavMenuItemHeight: 48,
+//     desktopSubheaderHeight: 48,
+//     desktopToolbarHeight: 56
+//   },
 //   fontFamily: 'Roboto, sans-serif',
 //   palette: {
-//     primary1Color: Colors.teal500,
-//     primary2Color: Colors.teal300,
-//     primary3Color: Colors.teal100,
-//     accent1Color: Colors.green500,
-//     accent2Color: Colors.grey100,
-//     accent3Color: Colors.grey500,
-//     textColor: Colors.black,
-//     alternateTextColor: Colors.white,
-//     canvasColor: Colors.white,
-//     borderColor: Colors.grey300,
-//     disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
-//     pickerHeaderColor: Colors.teal500
+//     primary1Color: cyan500,
+//     primary2Color: cyan700,
+//     primary3Color: grey400,
+//     accent1Color: pinkA200,
+//     accent2Color: grey100,
+//     accent3Color: grey500,
+//     textColor: darkBlack,
+//     alternateTextColor: white,
+//     canvasColor: white,
+//     borderColor: grey300,
+//     disabledColor: ColorManipulator.fade(darkBlack, 0.3),
+//     pickerHeaderColor: cyan500,
+//     clockCircleColor: ColorManipulator.fade(darkBlack, 0.07),
+//     shadowColor: fullBlack
 //   }
 // };
+// /
