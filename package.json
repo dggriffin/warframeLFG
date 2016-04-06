@@ -73,6 +73,7 @@
     "re-base": "^1.5.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-router": "^2.0.1",
     "react-tap-event-plugin": "^0.2.2",
     "underscore": "^1.8.3"
   }
