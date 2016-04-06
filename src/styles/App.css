@@ -25,28 +25,7 @@ h1,h2,h3,h4 {
   background: #666;
 }
 
-.hero-div {
-  height: 100%;
-  padding-top: 10em;
-  padding-bottom: 10em;
-  background-image: url("../images/0039-new.jpg");
-  background-position:top;
-  background-blend-mode: overlay;
-  background-color: #00bcd4;
-}
 
-.heroDivTitle {
-  color: white;
-}
-
-.content-div: {
-  min-height: 800px;
-}
-
-.footer-div {
-  padding-top: 2em;
-  font-size: .7em;
-}
 
 .group-posting-toolbar{
   display: flex;
