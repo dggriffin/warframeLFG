@@ -1,11 +1,14 @@
 .row {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
 }
 
 .colHalf {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
 }

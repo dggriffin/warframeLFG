@@ -1,7 +1,8 @@
 import React from 'react';
-import MissionQuestionSelect from './MissionQuestionSelect';
-import MissionSelect from './MissionSelect';
+import MissionQuestionSelect from './MissionQuestionSelect/MissionQuestionSelect';
+import MissionSelect from './MissionSelect/MissionSelect';
 import TextField from 'material-ui/lib/text-field';
+import styles from './MissionFields.scss';
 
 class MissionFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -40,21 +41,21 @@ class MissionFields extends React.Component{
   render() {
     return (
       <div>
-          <div className='row'>
-            <div className='col s6'>
+          <div className={styles.row}>
+            <div className={styles.colHalf}>
                 <MissionSelect
                   missions={this.state.missions}
                   selectHandler={this.handleMissionSelect.bind(this)}
                 />
             </div>
-            <div className='col s6'>
+            <div className={styles.colHalf}>
               {this.renderMissionDetail()}
             </div>
           </div>
-          <div className='row'>
-            <div className='col s12'>
+          <div className={styles.row}>
+            <div className={styles.col}>
               <TextField
-                style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+                style={{ fontSize: '1em', width: '100%', overflow: 'hidden', display: 'inline-block'}}
                 floatingLabelStyle={{fontSize: '1.2em'}}
                 floatingLabelText='comment'
                 multiLine={true}

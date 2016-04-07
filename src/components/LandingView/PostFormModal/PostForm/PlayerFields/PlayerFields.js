@@ -1,7 +1,9 @@
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
-import RegionSelect from './RegionSelect';
-import PlatformSelect from './PlatformSelect';
+import RegionSelect from './RegionSelect/RegionSelect';
+import PlatformSelect from './PlatformSelect/PlatformSelect';
+import styles from './PlayerFields.scss';
+
 class PlayerFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
@@ -38,8 +40,8 @@ class PlayerFields extends React.Component{
 
   render() {
     return (
-        <div className='row'>
-          <div className='col s6'>
+        <div className={styles.row}>
+          <div className={styles.colHalf}>
             <TextField
               floatingLabelText='username'
               style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
@@ -52,7 +54,8 @@ class PlayerFields extends React.Component{
               onChange={this.onChangePlatform.bind(this)}
             />
           </div>
-          <div className='col s6'>
+          <div className={styles.colHalf}>
+          <div> </div>
             <RegionSelect
               regions={this.state.appData.regions}
               onChange={this.onChangeRegion.bind(this)}

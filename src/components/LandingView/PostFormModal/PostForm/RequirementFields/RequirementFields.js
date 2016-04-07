@@ -1,7 +1,8 @@
 import React from 'react';
-import HaveWarframesList from './HaveWarframesList';
-import NeedWarframesList from './NeedWarframesList';
-import OpenSpotsSelect from './OpenSpotsSelect';
+import HaveWarframesList from './HaveWarframesList/HaveWarframesList';
+import NeedWarframesList from './NeedWarframesList/NeedWarframesList';
+import OpenSpotsSelect from './OpenSpotsSelect/OpenSpotsSelect';
+import styles from './RequirementFields.scss';
 
 class RequirementFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -19,14 +20,14 @@ class RequirementFields extends React.Component{
 
   render() {
     return (
-      <div className="row">
-        <div className="col s6">
+      <div className={styles.row}>
+        <div className={styles.colHalf}>
           <OpenSpotsSelect/>
             <NeedWarframesList
               warframes={this.state.appData.warframes}
             />
         </div>
-        <div className="col s6">
+        <div className={styles.colHalf}>
           <HaveWarframesList
             warframes={this.state.appData.warframes}
           />
