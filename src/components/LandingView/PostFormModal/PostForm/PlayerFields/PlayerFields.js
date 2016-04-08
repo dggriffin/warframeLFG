@@ -40,6 +40,7 @@ class PlayerFields extends React.Component{
 
   render() {
     return (
+      <div>
         <div className={styles.row}>
           <div className={styles.colHalf}>
             <TextField
@@ -49,19 +50,25 @@ class PlayerFields extends React.Component{
               multiLine={true}
               onBlur={this.onChangeUsername.bind(this)}
             />
+          </div>
+          <div className={styles.colHalf}>
+          </div>
+        </div>
+        <div className={styles.row}>
+          <div className={styles.colHalf}>
             <PlatformSelect
               platforms={this.state.appData.platforms}
               onChange={this.onChangePlatform.bind(this)}
             />
           </div>
           <div className={styles.colHalf}>
-          <div> </div>
             <RegionSelect
               regions={this.state.appData.regions}
               onChange={this.onChangeRegion.bind(this)}
             />
           </div>
         </div>
+      </div>
     );
   }
 }

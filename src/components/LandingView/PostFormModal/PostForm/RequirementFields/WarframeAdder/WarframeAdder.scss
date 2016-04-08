@@ -1,0 +1,22 @@
+.wfWrapper {
+  flex-grow: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.wfAll{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: #DEDEDE;
+  border-radius: 3.0em;
+  padding-right: .5em;
+}
+
+.wfHave{
+  background-color: #C8E6C9;
+  border-radius: 3em;
+  padding: .5em;
+}

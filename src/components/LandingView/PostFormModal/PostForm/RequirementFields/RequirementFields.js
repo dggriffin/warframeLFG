@@ -1,6 +1,5 @@
 import React from 'react';
-import HaveWarframesList from './HaveWarframesList/HaveWarframesList';
-import NeedWarframesList from './NeedWarframesList/NeedWarframesList';
+import WarframeAdder from './WarframeAdder/WarframeAdder';
 import OpenSpotsSelect from './OpenSpotsSelect/OpenSpotsSelect';
 import styles from './RequirementFields.scss';
 
@@ -8,7 +7,8 @@ class RequirementFields extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-        appData: props.appData
+        appData: props.appData,
+        openSpots: 3
     };
   }
 
@@ -18,17 +18,26 @@ class RequirementFields extends React.Component{
     });
   }
 
+  openSpotsChangeCallback(openSpots){
+    this.setState({
+      openSpots
+    });
+  }
+
   render() {
     return (
-      <div className={styles.row}>
-        <div className={styles.colHalf}>
-          <OpenSpotsSelect/>
-            <NeedWarframesList
-              warframes={this.state.appData.warframes}
-            />
+      <div>
+        <div className={styles.row}>
+          <div className={styles.colHalf}>
+            <OpenSpotsSelect defaultValue={this.state.openSpots} onChangeCallback={this.openSpotsChangeCallback.bind(this)}/>
+          </div>
+          <div className={styles.colHalf}>
+          </div>
         </div>
-        <div className={styles.colHalf}>
-          <HaveWarframesList
+        <div className={styles.row}>
+          <WarframeAdder
+            appData={this.state.appData}
+            openSpots={this.state.openSpots}
             warframes={this.state.appData.warframes}
           />
         </div>

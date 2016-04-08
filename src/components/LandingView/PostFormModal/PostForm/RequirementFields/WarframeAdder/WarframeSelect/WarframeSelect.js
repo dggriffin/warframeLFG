@@ -2,12 +2,13 @@ import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-class NeedWarframesSelect extends React.Component{
+class WarframesSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
         warframes: props.warframes,
-        value: null
+        value: '1',
+        label: props.label
     };
   }
 
@@ -36,13 +37,14 @@ class NeedWarframesSelect extends React.Component{
         value={this.state.value}
         maxHeight={250}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText='need warframe'
+        floatingLabelText={this.state.label}
         floatingLabelStyle={{fontSize: '1.2em', overflow: 'hidden', display: 'inline-block'}}
       >
+      <MenuItem value='1' primaryText='Any' />
         {this.renderMenuItems()}
       </SelectField>
     );
   }
 }
 
-module.exports = NeedWarframesSelect;
+module.exports = WarframesSelect;

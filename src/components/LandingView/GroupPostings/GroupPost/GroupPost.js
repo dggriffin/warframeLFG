@@ -3,6 +3,7 @@ import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
 import Avatar from 'material-ui/lib/avatar';
 import styles from './GroupPost.scss';
+import question from 'images/question.png';
 
 class GroupPost extends React.Component{
   constructor(props) {
