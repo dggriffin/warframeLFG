@@ -11,8 +11,7 @@ class WarframeAdder extends React.Component{
         appData: props.appData,
         warframes: props.warframes,
         openSpots: props.openSpots,
-        haveList: [{name: 'Any'}],
-        needList: [{name: 'Any'}, {name: 'Any'}, {name: 'Any'}]
+        warframeList: [{name: 'Any'},{name: 'Any'}, {name: 'Any'}, {name: 'Any'}]
     };
   }
 
@@ -29,7 +28,9 @@ class WarframeAdder extends React.Component{
   }
 
   renderHaveWarframes() {
-    return this.state.haveList.map((warframe) => {
+    let haveCount = 4 - this.state.openSpots;
+    let haveList = this.state.warframeList.slice(0, haveCount);
+    return haveList.map((warframe) => {
       if (this.state.appData.warframes[warframe.name]) {
         return <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
       }
@@ -40,7 +41,9 @@ class WarframeAdder extends React.Component{
   }
 
   renderNeedWarframes() {
-    return this.state.needList.map((warframe) => {
+    let haveCount = 4 - this.state.openSpots;
+    let needList = this.state.warframeList.slice(haveCount);
+    return needList.map((warframe) => {
       if (this.state.appData.warframes[warframe.name]) {
         return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
       }

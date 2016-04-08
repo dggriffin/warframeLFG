@@ -6,7 +6,8 @@ class OpenSpotsSelect extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
     this.state = {
-        value: null
+        value: props.defaultValue,
+        onChangeCallback: props.onChangeCallback
     };
   }
 
@@ -18,7 +19,7 @@ class OpenSpotsSelect extends React.Component{
 
   handleChange (event, index, value) {
     this.setState({value});
-    //this.state.selectHandler(value);
+    this.state.onChangeCallback(value);
   }
 
   renderMenuItems(){
@@ -35,7 +36,7 @@ class OpenSpotsSelect extends React.Component{
         value={this.state.value}
         maxHeight={250}
         onChange={this.handleChange.bind(this)}
-        floatingLabelText='spots'
+        floatingLabelText='open spots'
         floatingLabelStyle={{fontSize: '1.2em'}}
       >
         <MenuItem key={1} value={1} primaryText={1} />
