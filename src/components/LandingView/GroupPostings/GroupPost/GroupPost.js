@@ -51,16 +51,22 @@ class GroupPost extends React.Component{
 
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe) => {
-      if (this.state.appData.warframes[warframe.name].image) {
+      if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
         return <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+      }
+      else {
+        return <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
       }
     }, this);
   }
 
   renderNeedWarframes() {
     return this.state.post.needWarframes.map((warframe) => {
-      if (this.state.appData.warframes[warframe.name].image) {
+      if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
         return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+      }
+      else {
+        return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
       }
     }, this);
   }

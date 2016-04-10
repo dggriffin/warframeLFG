@@ -18,7 +18,8 @@ class WarframeAdder extends React.Component{
         warframes: props.warframes,
         openSpots: props.openSpots,
         warframeList: [{name: 'Any', build: 'Any'},{name: 'Any', build: 'Any'}, {name: 'Any', build: 'Any'}, {name: 'Any', build: 'Any'}],
-        open: false
+        open: false,
+        onChange: props.onChange
     };
   }
 
@@ -51,6 +52,7 @@ class WarframeAdder extends React.Component{
     var warframeList = _.clone(this.state.warframeList);
     warframeList[this.state.anchorEl.id].name = event.currentTarget.textContent;
     this.setState({warframeList, open: false});
+    this.state.onChange(warframeList);
   }
 
   handleRequestClose(){

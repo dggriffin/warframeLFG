@@ -7,6 +7,10 @@ import Step from 'material-ui/lib/Stepper/HorizontalStep';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import Done from 'material-ui/lib/svg-icons/action/done';
+import _ from 'underscore';
+
+import Rebase from 're-base';
+const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
 
 class PostForm extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -19,7 +23,7 @@ class PostForm extends React.Component{
         lastActiveStep: 0,
         playerObject: {},
         missionObject: {},
-        requirementObject: {},
+        requirementObject: {openSpots: 3, haveWarframes: [{build: 'Any', name: 'Any'}], needWarframes: [{build: 'Any', name: 'Any'}, {build: 'Any', name: 'Any'}, {build: 'Any', name: 'Any'}]},
         playerValid: null,
         missionValid: null,
         requirementValid: null
@@ -79,23 +83,23 @@ class PostForm extends React.Component{
 
   validatePlayerFields(){
     const playerObject = this.state.playerObject;
-    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
+    const playerValid = {userName: !!playerObject.userName, region: !!playerObject.region, platform: !!playerObject.platform};
     this.setState({playerValid});
     return playerObject.userName && playerObject.region && playerObject.platform;
   }
 
   validateMissionFields(){
-    const playerObject = this.state.playerObject;
-    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
-    this.setState({playerValid});
-    return playerObject.userName && playerObject.region && playerObject.platform;
-  }
+    const missionObject = this.state.missionObject;
+    let missionValid = {mission: false, comment: true};
 
-  validateRequirementFields(){
-    const playerObject = this.state.playerObject;
-    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
-    this.setState({playerValid});
-    return playerObject.userName && playerObject.region && playerObject.platform;
+    _.each(_.keys(missionObject), (key) => {
+      missionValid[key] = !!missionObject[key];
+    });
+    this.setState({missionValid});
+
+    return _.reduce(_.keys(missionValid), (memo, key) => {
+      return memo && missionValid[key];
+    }, true);
   }
 
   continue() {
@@ -104,8 +108,6 @@ class PostForm extends React.Component{
       lastActiveStep
     } = this.state;
     let valid = true;
-    debugger;
-
     switch(activeStep){
       case 0:
         valid = this.validatePlayerFields();
@@ -115,6 +117,7 @@ class PostForm extends React.Component{
         break;
       case 2:
         valid = true;
+        this.submitPost();
         break;
     }
     if (valid) {
@@ -133,6 +136,26 @@ class PostForm extends React.Component{
                   onClick={this.continue.bind(this)}
                 />,
               <FlatButton key={1} label='Cancel' onClick={this.state.handleClose} />];
+  }
+
+  submitPost() {
+    debugger;
+    let postObject = {};
+    postObject.createdOn = new Date();
+    postObject.creator = this.state.playerObject.userName;
+    postObject.platform = this.state.playerObject.platform;
+    postObject.region = this.state.playerObject.region;
+    postObject.mission = this.state.missionObject;
+    postObject.haveWarframes = this.state.requirementObject.haveWarframes;
+    postObject.needWarframes = this.state.requirementObject.needWarframes;
+    postObject.spotsLeft = this.state.requirementObject.openSpots;
+    base.push('postings', {
+      data: postObject,
+      then(){
+        console.log(postObject);
+        this.state.handleClose();
+      }
+    });
   }
 
   render() {
@@ -162,9 +185,10 @@ class PostForm extends React.Component{
           actions={this.renderStepActions(2)}
         >
           <MissionFields
-            validation={this.state.playerValid}
+            validation={this.state.missionValid}
             missions={this.state.appData.missions}
             onChange={this.handleMissionFormChange.bind(this)}
+            appData ={this.state.appData}
           />
         </Step>
         <Step

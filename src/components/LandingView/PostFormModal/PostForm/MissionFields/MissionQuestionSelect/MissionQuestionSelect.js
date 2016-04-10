@@ -9,13 +9,15 @@ class MissionQuestionSelect extends React.Component{
         keyName: props.keyName,
         valueList: props.valueList,
         value: null,
-        onChange: props.onChange
+        onChange: props.onChange,
+        errorText: props.errorText
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-        mission: nextProps.mission
+        mission: nextProps.mission,
+        errorText: nextProps.errorText
     });
   }
 
@@ -36,13 +38,14 @@ class MissionQuestionSelect extends React.Component{
   render() {
     return (
       <SelectField
-        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block', overflow: 'visible'}}
         autoWidth={true}
         value={this.state.value}
         disabled={!this.state.valueList}
         onChange={this.handleChange.bind(this)}
         floatingLabelText={this.state.keyName}
         floatingLabelStyle={{fontSize: '1.2em'}}
+        errorText={this.state.errorText}
       >
         {this.renderMenuItems()}
       </SelectField>

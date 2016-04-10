@@ -8,8 +8,15 @@ class MissionSelect extends React.Component{
     this.state = {
         missions: props.missions,
         selectHandler: props.selectHandler,
-        value: null
+        value: null,
+        errorText: props.errorText
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      errorText: nextProps.errorText
+    });
   }
 
   handleChange (event, index, value) {
@@ -27,11 +34,12 @@ class MissionSelect extends React.Component{
     return (
       <SelectField
         autoWidth={true}
-        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block', overflow: 'visible'}}
         value={this.state.value}
         onChange={this.handleChange.bind(this)}
         floatingLabelText='mission'
         floatingLabelStyle={{fontSize: '1.2em'}}
+        errorText={this.state.errorText}
       >
         {this.renderMenuItems()}
       </SelectField>
