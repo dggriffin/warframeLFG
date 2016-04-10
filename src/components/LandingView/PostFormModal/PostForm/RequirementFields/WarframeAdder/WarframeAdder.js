@@ -1,12 +1,13 @@
 import React from 'react';
-import WarframeSelect from './WarframeSelect/WarframeSelect';
 import styles from './WarframeAdder.scss'
 import question from 'images/question.png';
 import Avatar from 'material-ui/lib/avatar';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import PersonAdd from 'material-ui/lib/svg-icons/social/person-add';
+import PersonAddIcon from 'material-ui/lib/svg-icons/social/person-add';
+import EditIcon from 'material-ui/lib/svg-icons/image/edit';
 import Popover from 'material-ui/lib/popover/popover';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import _ from 'underscore';
 
 
 class WarframeAdder extends React.Component{
@@ -16,7 +17,7 @@ class WarframeAdder extends React.Component{
         appData: props.appData,
         warframes: props.warframes,
         openSpots: props.openSpots,
-        warframeList: [{name: 'Any'},{name: 'Any'}, {name: 'Any'}, {name: 'Any'}],
+        warframeList: [{name: 'Any', build: 'Any'},{name: 'Any', build: 'Any'}, {name: 'Any', build: 'Any'}, {name: 'Any', build: 'Any'}],
         open: false
     };
   }
@@ -47,9 +48,9 @@ class WarframeAdder extends React.Component{
   }
 
   handleMenuTouch(event){
-    debugger;
-    console.log(event.currentTarget.textContent);
-    console.log(this.state.anchorEl.parentElement.key)
+    var warframeList = _.clone(this.state.warframeList);
+    warframeList[this.state.anchorEl.id].name = event.currentTarget.textContent;
+    this.setState({warframeList, open: false});
   }
 
   handleRequestClose(){
@@ -61,39 +62,42 @@ class WarframeAdder extends React.Component{
   renderHaveWarframes() {
     let haveCount = 4 - this.state.openSpots;
     let haveList = this.state.warframeList.slice(0, haveCount);
-    let count = 0;
-    return haveList.map((warframe) => {
+    return haveList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <div>
-            <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
-            <button className={styles.add}>Hey</button>
+        return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+          <EditIcon />
+        </FloatingActionButton>
         </div>
       }
         else {
-          return <div key={count}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
-          <FloatingActionButton onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
-            <PersonAdd />
+          return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+          <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+            <PersonAddIcon />
           </FloatingActionButton>
           </div>
       }
-      count++;
     }, this);
   }
 
   renderNeedWarframes() {
     let haveCount = 4 - this.state.openSpots;
     let needList = this.state.warframeList.slice(haveCount);
-    return needList.map((warframe) => {
+    return needList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
-      }
-      else {
-        return <div><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
-        <FloatingActionButton  onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
-          <PersonAdd />
+        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+          <EditIcon />
         </FloatingActionButton>
         </div>
-    }
+      }
+      else {
+        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+          <PersonAddIcon />
+        </FloatingActionButton>
+        </div>
+      }
     }, this);
   }
 
@@ -118,6 +122,12 @@ class WarframeAdder extends React.Component{
           className={styles.popOver}
           animated={false}
         >
+          <MenuItem
+            focusState='keyboard-focused'
+            onTouchTap={this.handleMenuTouch.bind(this)}
+            style={{overflowX: 'hidden'}}
+            value='Any'
+            primaryText='Any' />
           {this.renderMenuItems()}
         </Popover>
       </div>
