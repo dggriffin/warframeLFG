@@ -51,7 +51,7 @@ class PlayerFields extends React.Component{
               floatingLabelStyle={{fontSize: '1.2em'}}
               multiLine={true}
               onBlur={this.onChangeUsername.bind(this)}
-              errorText={this.state.validation.userName ? '' : 'This field is required'}
+              errorText={!this.state.validation || this.state.validation.userName ? '' : 'This field is required'}
             />
           </div>
           <div className={styles.colHalf}>
@@ -62,14 +62,14 @@ class PlayerFields extends React.Component{
             <PlatformSelect
               platforms={this.state.appData.platforms}
               onChange={this.onChangePlatform.bind(this)}
-              errorText={this.state.validation.platform ? '' : 'This field is required'}
+              errorText={!this.state.validation || this.state.validation.platform ? '' : 'This field is required'}
             />
           </div>
           <div className={styles.colHalf}>
             <RegionSelect
               regions={this.state.appData.regions}
               onChange={this.onChangeRegion.bind(this)}
-              errorText={this.state.validation.region ? '' : 'This field is required'}
+              errorText={!this.state.validation || this.state.validation.region ? '' : 'This field is required'}
             />
           </div>
         </div>

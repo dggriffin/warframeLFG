@@ -8,7 +8,8 @@ class MissionQuestionSelect extends React.Component{
     this.state = {
         keyName: props.keyName,
         valueList: props.valueList,
-        value: null
+        value: null,
+        onChange: props.onChange
     };
   }
 
@@ -20,7 +21,7 @@ class MissionQuestionSelect extends React.Component{
 
   handleChange (event, index, value) {
     this.setState({value});
-    //this.state.selectHandler(value);
+    this.state.onChange(value);
   }
 
   renderMenuItems() {

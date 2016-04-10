@@ -20,9 +20,9 @@ class PostForm extends React.Component{
         playerObject: {},
         missionObject: {},
         requirementObject: {},
-        playerValid: {userName: true, platform: true, region: true},
-        missionValid: true,
-        requirementValid: true
+        playerValid: null,
+        missionValid: null,
+        requirementValid: null
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -84,6 +84,20 @@ class PostForm extends React.Component{
     return playerObject.userName && playerObject.region && playerObject.platform;
   }
 
+  validateMissionFields(){
+    const playerObject = this.state.playerObject;
+    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
+    this.setState({playerValid});
+    return playerObject.userName && playerObject.region && playerObject.platform;
+  }
+
+  validateRequirementFields(){
+    const playerObject = this.state.playerObject;
+    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
+    this.setState({playerValid});
+    return playerObject.userName && playerObject.region && playerObject.platform;
+  }
+
   continue() {
     const {
       activeStep,
@@ -100,7 +114,7 @@ class PostForm extends React.Component{
         valid = this.validateMissionFields();
         break;
       case 2:
-        valid = this.validateRequirementFields();
+        valid = true;
         break;
     }
     if (valid) {
@@ -148,7 +162,9 @@ class PostForm extends React.Component{
           actions={this.renderStepActions(2)}
         >
           <MissionFields
+            validation={this.state.playerValid}
             missions={this.state.appData.missions}
+            onChange={this.handleMissionFormChange.bind(this)}
           />
         </Step>
         <Step
@@ -158,6 +174,7 @@ class PostForm extends React.Component{
         >
           <RequirementFields
             appData={this.state.appData}
+            onChange={this.handleRequirementFormChange.bind(this)}
           />
         </Step>
       </Stepper>
