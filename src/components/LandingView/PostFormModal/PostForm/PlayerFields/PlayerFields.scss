@@ -12,3 +12,11 @@
   flex-direction: column;
   width: 40%;
 }
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

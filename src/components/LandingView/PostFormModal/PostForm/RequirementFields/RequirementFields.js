@@ -31,8 +31,6 @@ class RequirementFields extends React.Component{
           <div className={styles.colHalf}>
             <OpenSpotsSelect defaultValue={this.state.openSpots} onChangeCallback={this.openSpotsChangeCallback.bind(this)}/>
           </div>
-          <div className={styles.colHalf}>
-          </div>
         </div>
         <div className={styles.row}>
           <WarframeAdder

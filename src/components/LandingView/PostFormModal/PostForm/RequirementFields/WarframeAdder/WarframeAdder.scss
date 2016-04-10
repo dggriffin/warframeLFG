@@ -18,4 +18,30 @@
   background-color: #C8E6C9;
   border-radius: 3em;
   padding: .5em;
+  flex-direction: row;
+  display: flex;
+}
+
+.add{
+  position: absolute;
+  top: 9.5em;
+  margin-left: -2em;
+  overflow: visible;
+  z-index: 999;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  color: #9e9e9e;
+  margin-bottom: .2em;
+}
+
+.popOver{
+  height: 15em;
+  overflow-x: visible;
+  width: auto;
 }
