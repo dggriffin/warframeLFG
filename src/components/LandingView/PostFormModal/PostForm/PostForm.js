@@ -19,7 +19,10 @@ class PostForm extends React.Component{
         lastActiveStep: 0,
         playerObject: {},
         missionObject: {},
-        requirementObject: {}
+        requirementObject: {},
+        playerValid: {userName: true, platform: true, region: true},
+        missionValid: true,
+        requirementValid: true
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -74,16 +77,38 @@ class PostForm extends React.Component{
     this.setState({requirementObject: requirementForm});
   }
 
+  validatePlayerFields(){
+    const playerObject = this.state.playerObject;
+    const playerValid = {userName: playerObject.userName, region: playerObject.region, platform: playerObject.platform};
+    this.setState({playerValid});
+    return playerObject.userName && playerObject.region && playerObject.platform;
+  }
+
   continue() {
     const {
       activeStep,
       lastActiveStep
     } = this.state;
+    let valid = true;
+    debugger;
 
-    this.setState({
-      activeStep: activeStep + 1,
-      lastActiveStep: Math.max(lastActiveStep, activeStep + 1)
-    });
+    switch(activeStep){
+      case 0:
+        valid = this.validatePlayerFields();
+        break;
+      case 1:
+        valid = this.validateMissionFields();
+        break;
+      case 2:
+        valid = this.validateRequirementFields();
+        break;
+    }
+    if (valid) {
+      this.setState({
+        activeStep: activeStep + 1,
+        lastActiveStep: Math.max(lastActiveStep, activeStep + 1)
+      });
+    }
   }
 
   renderStepActions(stepNumber) {
@@ -112,6 +137,7 @@ class PostForm extends React.Component{
           actions={this.renderStepActions(1)}
         >
           <PlayerFields
+            validation={this.state.playerValid}
             appData={this.state.appData}
             onChange={this.handlePlayerFormChange.bind(this)}
           />

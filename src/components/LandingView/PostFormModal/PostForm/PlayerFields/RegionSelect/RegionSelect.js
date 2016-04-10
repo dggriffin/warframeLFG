@@ -8,14 +8,16 @@ class RegionSelect extends React.Component{
     this.state = {
         regions: props.regions,
         value: null,
-        onChange: props.onChange
+        onChange: props.onChange,
+        errorText: props.errorText
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
         regions: nextProps.regions,
-        onChange: nextProps.onChange
+        onChange: nextProps.onChange,
+        errorText: nextProps.errorText
     });
   }
 
@@ -35,10 +37,11 @@ class RegionSelect extends React.Component{
       <SelectField
         value={this.state.value}
         autoWidth={true}
-        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block', overflow: 'visible'}}
         onChange={this.handleChange.bind(this)}
         floatingLabelText='region'
         floatingLabelStyle={{fontSize: '1.2em'}}
+        errorText= {this.state.errorText}
       >
         {this.renderMenuItems()}
       </SelectField>

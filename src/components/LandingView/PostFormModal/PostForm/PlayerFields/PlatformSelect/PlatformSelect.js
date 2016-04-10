@@ -8,14 +8,16 @@ class PlatformSelect extends React.Component{
     this.state = {
         platforms: props.platforms,
         value: null,
-        onChange: props.onChange
+        onChange: props.onChange,
+        errorText: props.errorText
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
         regions: nextProps.platforms,
-        onChange: nextProps.onChange
+        onChange: nextProps.onChange,
+        errorText: nextProps.errorText
     });
   }
 
@@ -35,10 +37,11 @@ class PlatformSelect extends React.Component{
       <SelectField
         autoWidth={true}
         value={this.state.value}
-        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block', overflow: 'visible'}}
         onChange={this.handleChange.bind(this)}
         floatingLabelText='platform'
         floatingLabelStyle={{fontSize: '1.2em'}}
+        errorText={this.state.errorText}
       >
         {this.renderMenuItems()}
       </SelectField>
