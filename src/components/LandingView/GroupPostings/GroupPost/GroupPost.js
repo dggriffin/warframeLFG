@@ -50,23 +50,23 @@ class GroupPost extends React.Component{
   }
 
   renderHaveWarframes() {
-    return this.state.post.haveWarframes.map((warframe) => {
+    return this.state.post.haveWarframes.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
-        return <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar key={`have-${warframe.name}-${index}`} style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
       }
       else {
-        return <Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <Avatar key={`have-${warframe.name}-${index}`} style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
       }
     }, this);
   }
 
   renderNeedWarframes() {
-    return this.state.post.needWarframes.map((warframe) => {
+    return this.state.post.needWarframes.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
-        return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <Avatar key={`need-${warframe.name}-${index}`} style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
       }
       else {
-        return <Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <Avatar key={`need-${warframe.name}-${index}`} style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
       }
     }, this);
   }
@@ -81,8 +81,10 @@ class GroupPost extends React.Component{
 
               <div className={styles.column}>
                 <div style={{paddingBottom: 20}}><span className={styles.title}>{this.state.post.creator}</span></div>
-                <span className={styles.primaryText}>{this.state.post.mission.name +
-                    ' - ' + this.state.post.mission.type + ' ' + this.state.post.mission.tier}</span>
+                <span className={styles.primaryText}>
+                  {`${this.state.post.mission.name} - ${this.state.post.mission.type} ${this.state.post.mission.tier ? this.state.post.mission.tier : ''}
+                  ${this.state.post.mission.what ? ': ' + this.state.post.mission.what : ''}`}
+                </span>
                   <div style={{paddingBottom: 20}} className={styles.secondaryText}>{this.state.post.mission.comment}</div>
                 <div className={styles.column}>
                   <span className={styles.secondaryText}>{this.state.post.platform}</span>

@@ -139,21 +139,23 @@ class PostForm extends React.Component{
   }
 
   submitPost() {
-    debugger;
     let postObject = {};
-    postObject.createdOn = new Date();
+    postObject.createdOn = new Date().getTime();
     postObject.creator = this.state.playerObject.userName;
     postObject.platform = this.state.playerObject.platform;
     postObject.region = this.state.playerObject.region;
     postObject.mission = this.state.missionObject;
+    postObject.mission.name = this.state.missionObject.mission;
     postObject.haveWarframes = this.state.requirementObject.haveWarframes;
     postObject.needWarframes = this.state.requirementObject.needWarframes;
     postObject.spotsLeft = this.state.requirementObject.openSpots;
+
+    //better way to handle scope?
+    let me = this;
     base.push('postings', {
       data: postObject,
       then(){
-        console.log(postObject);
-        this.state.handleClose();
+        me.state.handleClose();
       }
     });
   }

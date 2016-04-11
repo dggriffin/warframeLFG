@@ -4,6 +4,7 @@ import GroupPostingsToolbar from './GroupPostingsToolbar/GroupPostingsToolbar';
 import List from 'material-ui/lib/lists/list';
 import Divider from 'material-ui/lib/divider';
 import GroupPost from './GroupPost/GroupPost';
+import styles from './GroupPostings.scss';
 
 import Rebase from 're-base';
 const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
@@ -25,7 +26,11 @@ class GroupPostings extends React.Component{
     this.ref = base.syncState('postings', {
       context: this,
       state: 'posts',
-      asArray: true
+      asArray: true,
+      queries: {
+        orderByChild: 'createdOn',
+        startAt: (new Date().getTime() - (3600000))
+      }
     });
   }
 
@@ -41,10 +46,10 @@ class GroupPostings extends React.Component{
 
   renderPosts() {
     var posts = this.state.filteredPosts ? this.state.filteredPosts : this.state.posts;
-    var postMap = posts.map((post) => {
-      return <GroupPost post={post} appData={this.state.appData}/>
+    var postMap = posts.map((post, index) => {
+      return <GroupPost post={post} key={index} appData={this.state.appData}/>
     });
-    return postMap.length ? postMap.reverse() : <div className='center grey-text' style={{marginTop: '3em'}}>Sorry! There are no results :( </div>
+    return postMap.length ? postMap.reverse() : <div className={styles.noResults} style={{marginTop: '3em'}}>Sorry! There are no results that meet this criteria in the past hour.</div>
   }
 
   handleFilterChange(filter) {
