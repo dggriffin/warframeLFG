@@ -2,11 +2,11 @@ import React from 'react';
 import MissionFields from './MissionFields/MissionFields';
 import PlayerFields from './PlayerFields/PlayerFields';
 import RequirementFields from './RequirementFields/RequirementFields';
-import Stepper from 'material-ui/lib/Stepper/Stepper';
-import Step from 'material-ui/lib/Stepper/HorizontalStep';
-import RaisedButton from 'material-ui/lib/raised-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import Done from 'material-ui/lib/svg-icons/action/done';
+import Stepper from 'material-ui/Stepper/Stepper';
+import Step from 'material-ui/Stepper/Step';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import Done from 'material-ui/svg-icons/action/done';
 import _ from 'underscore';
 
 import Rebase from 're-base';

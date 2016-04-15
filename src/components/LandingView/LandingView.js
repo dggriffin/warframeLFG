@@ -2,8 +2,8 @@ require('styles/App.css');
 import Rebase from 're-base';
 import GroupPostings from './GroupPostings/GroupPostings';
 import React from 'react';
-import CircularProgress from 'material-ui/lib/circular-progress';
-import Paper from 'material-ui/lib/paper';
+import CircularProgress from 'material-ui/CircularProgress';
+import Paper from 'material-ui/Paper';
 import styles from './LandingView.scss'
 
 const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');

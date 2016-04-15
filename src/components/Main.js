@@ -1,6 +1,9 @@
 require('styles/App.css');
 import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
+
 //import theme from 'styles/EnergyBeeTheme';
 class AppComponent extends React.Component {
   constructor(props){
@@ -10,18 +13,24 @@ class AppComponent extends React.Component {
     }
   }
 
+  getChildContext() {
+  return {muiTheme: getMuiTheme(baseTheme)};
+}
+
   render(){
     return (
       <div>
         <AppBar
           title='WarframeLFG.io'
-          style={{backgroundColor:'#FFF'}}
-          titleStyle={{color: '#00bcd4', fontWeight: 100}}
           />
         {this.props.children}
       </div>
     )
   }
 }
+
+AppComponent.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired
+};
 
 module.exports = AppComponent;

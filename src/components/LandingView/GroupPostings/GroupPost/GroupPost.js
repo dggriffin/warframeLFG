@@ -1,7 +1,7 @@
 import React from 'react';
-import ListItem from 'material-ui/lib/lists/list-item';
-import Paper from 'material-ui/lib/paper';
-import Avatar from 'material-ui/lib/avatar';
+import ListItem from 'material-ui/List/ListItem';
+import Paper from 'material-ui/Paper';
+import Avatar from 'material-ui/Avatar';
 import styles from './GroupPost.scss';
 import question from 'images/question.png';
 

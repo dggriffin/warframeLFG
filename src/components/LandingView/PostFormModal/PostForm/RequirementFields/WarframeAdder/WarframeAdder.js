@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './WarframeAdder.scss'
 import question from 'images/question.png';
-import Avatar from 'material-ui/lib/avatar';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import PersonAddIcon from 'material-ui/lib/svg-icons/social/person-add';
-import EditIcon from 'material-ui/lib/svg-icons/image/edit';
-import Popover from 'material-ui/lib/popover/popover';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import Avatar from 'material-ui/Avatar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import PersonAddIcon from 'material-ui/svg-icons/social/person-add';
+import EditIcon from 'material-ui/svg-icons/image/edit';
+import Popover from 'material-ui/Popover';
+import MenuItem from 'material-ui/MenuItem';
 import _ from 'underscore';
 
 

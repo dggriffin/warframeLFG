@@ -1,6 +1,6 @@
 import React from 'react';
 import PostForm from './PostForm/PostForm';
-import Dialog from 'material-ui/lib/dialog';
+import Dialog from 'material-ui/Dialog';
 
 class PostFormModal extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
