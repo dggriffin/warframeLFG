@@ -66,14 +66,14 @@ class WarframeAdder extends React.Component{
     let haveList = this.state.warframeList.slice(0, haveCount);
     return haveList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <div key={index}><Avatar size='70' style={{border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
         <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
         else {
-          return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+          return <div key={index}><Avatar size='70' style={{border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
           <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
             <PersonAddIcon />
           </FloatingActionButton>
@@ -87,14 +87,14 @@ class WarframeAdder extends React.Component{
     let needList = this.state.warframeList.slice(haveCount);
     return needList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <div key={index + haveCount}><Avatar size='70' style={{opacity: .6, border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
         <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
       else {
-        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <div key={index + haveCount}><Avatar size='70' style={{opacity: .6, border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
         <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <PersonAddIcon />
         </FloatingActionButton>
