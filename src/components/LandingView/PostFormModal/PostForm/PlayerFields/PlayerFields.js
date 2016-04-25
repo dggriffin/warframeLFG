@@ -1,5 +1,5 @@
 import React from 'react';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'material-ui/TextField';
 import RegionSelect from './RegionSelect/RegionSelect';
 import PlatformSelect from './PlatformSelect/PlatformSelect';
 import styles from './PlayerFields.scss';

@@ -24,7 +24,7 @@
 
 .add{
   position: absolute;
-  top: 9.5em;
+  top: 18.5em;
   margin-left: -2em;
   overflow: visible;
   z-index: 999;
@@ -44,4 +44,23 @@
   height: 15em;
   overflow-x: visible;
   width: auto;
+}
+
+.haveWarframeImage {
+  background-color: #EDEDED;
+  height: 4.5em;
+  width: 4.5em;
+  border-radius: 5em;
+  border: 2.5px solid #4CAF50;
+  margin-right: .2em;
+}
+
+.needWarframeImage {
+  background-color: #EDEDED;
+  height: 4.5em;
+  width: 4.5em;
+  border-radius: 5em;
+  border: 2.5px dotted grey;
+  opacity: .6;
+  margin-right: .2em;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import PostFormModal from '../PostFormModal/PostFormModal';
 import GroupPostingsToolbar from './GroupPostingsToolbar/GroupPostingsToolbar';
-import List from 'material-ui/lib/lists/list';
-import Divider from 'material-ui/lib/divider';
+import List from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 import GroupPost from './GroupPost/GroupPost';
 import styles from './GroupPostings.scss';
 

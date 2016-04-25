@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './WarframeAdder.scss'
 import question from 'images/question.png';
-import Avatar from 'material-ui/lib/avatar';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import PersonAddIcon from 'material-ui/lib/svg-icons/social/person-add';
-import EditIcon from 'material-ui/lib/svg-icons/image/edit';
-import Popover from 'material-ui/lib/popover/popover';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import PersonAddIcon from 'material-ui/svg-icons/social/person-add';
+import EditIcon from 'material-ui/svg-icons/image/edit';
+import Popover from 'material-ui/Popover';
+import MenuItem from 'material-ui/MenuItem';
 import _ from 'underscore';
 
 
@@ -66,14 +65,14 @@ class WarframeAdder extends React.Component{
     let haveList = this.state.warframeList.slice(0, haveCount);
     return haveList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <div key={index}><img className={styles.haveWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
         <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
         else {
-          return <div key={index}><Avatar style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+          return <div key={index}><img className={styles.haveWarframeImage} src={question}/>
           <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
             <PersonAddIcon />
           </FloatingActionButton>
@@ -87,14 +86,14 @@ class WarframeAdder extends React.Component{
     let needList = this.state.warframeList.slice(haveCount);
     return needList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
-        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <div key={index + haveCount}><img className={styles.needWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
         <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
       else {
-        return <div key={index + haveCount}><Avatar style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <div key={index + haveCount}><img className={styles.needWarframeImage} src={question}/>
         <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <PersonAddIcon />
         </FloatingActionButton>

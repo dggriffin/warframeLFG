@@ -1,9 +1,9 @@
 import React from 'react';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import RaisedButton from 'material-ui/lib/raised-button';
-import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
-import Toggle from 'material-ui/lib/toggle';
-import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import ToolbarSeparator from 'material-ui/Toolbar/ToolbarSeparator';
+import Toggle from 'material-ui/Toggle';
+import SelectField from 'material-ui/SelectField';
 
 class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */

@@ -1,7 +1,7 @@
 import React from 'react';
 import MissionQuestionSelect from './MissionQuestionSelect/MissionQuestionSelect';
 import MissionSelect from './MissionSelect/MissionSelect';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'material-ui/TextField';
 import styles from './MissionFields.scss';
 import _ from 'underscore';
 
