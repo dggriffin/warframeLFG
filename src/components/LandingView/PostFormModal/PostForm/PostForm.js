@@ -191,9 +191,9 @@ class PostForm extends React.Component{
           </Step>
         </Stepper>
         <div style={{height: 'auto', width: 'auto', padding: '1em'}}>
-          <p>
+          <div>
             {this.getStepContent(stepIndex)}
-          </p>
+          </div>
           <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '5em'}}>
             {this.renderStepActions(stepIndex)}
           </div>

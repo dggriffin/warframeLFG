@@ -1,7 +1,6 @@
 import React from 'react';
 import ListItem from 'material-ui/List/ListItem';
 import Paper from 'material-ui/Paper';
-import Avatar from 'material-ui/Avatar';
 import styles from './GroupPost.scss';
 import question from 'images/question.png';
 
@@ -52,10 +51,10 @@ class GroupPost extends React.Component{
   renderHaveWarframes() {
     return this.state.post.haveWarframes.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
-        return <Avatar key={`have-${warframe.name}-${index}`} size='70' style={{height: '3.2em', width: '3.2em', border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <img key={`have-${warframe.name}-${index}`} className={styles.haveWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
       }
       else {
-        return <Avatar key={`have-${warframe.name}-${index}`} size='70' style={{border: '2.5px solid #4CAF50'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <img key={`have-${warframe.name}-${index}`} className={styles.haveWarframeImage} src={question}/>
       }
     }, this);
   }
@@ -63,10 +62,10 @@ class GroupPost extends React.Component{
   renderNeedWarframes() {
     return this.state.post.needWarframes.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name] && this.state.appData.warframes[warframe.name].image) {
-        return <Avatar key={`need-${warframe.name}-${index}`} size='70' style={{opacity: .6, height: '3em', width: '3em', border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={this.state.appData.warframes[warframe.name].image}/>
+        return <img key={`need-${warframe.name}-${index}`} className={styles.needWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
       }
       else {
-        return <Avatar key={`need-${warframe.name}-${index}`} size='70' style={{opacity: .6, border: '2.5px dotted grey'}}backgroundColor={'#EDEDED'} className='warframe-img' src={question}/>
+        return <img key={`need-${warframe.name}-${index}`} className={styles.needWarframeImage} src={question}/>
       }
     }, this);
   }
