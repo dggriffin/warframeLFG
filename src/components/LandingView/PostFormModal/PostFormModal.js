@@ -27,9 +27,9 @@ class PostFormModal extends React.Component{
         <Dialog
           bodyStyle={{padding: 0}}
           modal={false}
-          contentStyle={{maxWidth:660}}
           open={this.state.open}
           actionsContainerClassName={""}
+          contentStyle={{width: '100%'}}
           onRequestClose={this.handleClose.bind(this)}
           autoScrollBodyContent={true}
         >

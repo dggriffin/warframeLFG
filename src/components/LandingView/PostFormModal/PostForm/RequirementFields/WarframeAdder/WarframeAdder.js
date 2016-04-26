@@ -66,14 +66,14 @@ class WarframeAdder extends React.Component{
     return haveList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
         return <div key={index}><img className={styles.haveWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
-        <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+        <FloatingActionButton id={index} onClick={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
         else {
           return <div key={index}><img className={styles.haveWarframeImage} src={question}/>
-          <FloatingActionButton id={index} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+          <FloatingActionButton id={index} onClick={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
             <PersonAddIcon />
           </FloatingActionButton>
           </div>
@@ -87,14 +87,14 @@ class WarframeAdder extends React.Component{
     return needList.map((warframe, index) => {
       if (this.state.appData.warframes[warframe.name]) {
         return <div key={index + haveCount}><img className={styles.needWarframeImage} src={this.state.appData.warframes[warframe.name].image}/>
-        <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+        <FloatingActionButton id={index + haveCount} onClick={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <EditIcon />
         </FloatingActionButton>
         </div>
       }
       else {
         return <div key={index + haveCount}><img className={styles.needWarframeImage} src={question}/>
-        <FloatingActionButton id={index + haveCount} onTouchTap={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
+        <FloatingActionButton id={index + haveCount} onClick={this.handleTouchTap.bind(this)} secondary={true} className={styles.add} mini={true}>
           <PersonAddIcon />
         </FloatingActionButton>
         </div>

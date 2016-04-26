@@ -170,21 +170,21 @@ class PostForm extends React.Component{
   render() {
     const {finished, stepIndex} = this.state;
     return (
-      <div>
-        <Stepper style={{padding: 15, backgroundColor: 'rgb(232, 232, 232)'}}
+      <div style={{padding: "0 !important"}}>
+        <Stepper style={{padding: '15px 0 15px 0', width: '100%', backgroundColor: 'rgb(232, 232, 232)'}}
           activeStep={stepIndex}
           >
-          <Step>
+          <Step style={{flex: '0 3 auto'}}>
             <StepLabel>
               user details
             </StepLabel>
           </Step>
-          <Step>
+          <Step style={{flex: '0 3 auto'}}>
             <StepLabel>
               mission details
             </StepLabel>
           </Step>
-          <Step>
+          <Step style={{flex: '0 3 auto'}}>
             <StepLabel>
               party details
             </StepLabel>
