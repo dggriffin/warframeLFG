@@ -7,18 +7,21 @@ class PostFormModal extends React.Component{
     super(props);
     this.state = {
         appData: props.appData,
-        open: false
+        open: false,
+        handleClose: props.handleClose
     };
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
       appData: nextProps.appData,
-      open: nextProps.open
+      open: nextProps.open,
+      handleClose: nextProps.handleClose
     });
   }
 
   handleClose(){
     this.setState({open: false});
+    this.state.handleClose();
   }
 
   render() {

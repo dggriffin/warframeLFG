@@ -1,8 +1,34 @@
 require('styles/App.css');
 import React from 'react';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import baseTheme from 'styles/EnergyBeeTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import {
+  cyan500, cyan700,
+  grey100, grey300, grey400, grey500,
+  pinkA200,
+  white, darkBlack, fullBlack,
+} from 'material-ui/styles/colors';
+
 import AppBar from 'material-ui/AppBar';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: cyan500,
+    primary2Color: cyan700,
+    primary3Color: grey400,
+    accent1Color: pinkA200,
+    accent2Color: grey100,
+    accent3Color: grey500,
+    textColor: darkBlack,
+    alternateTextColor: white,
+    canvasColor: white,
+    borderColor: grey300,
+    pickerHeaderColor: cyan500,
+    shadowColor: fullBlack
+  }
+});
 
 //import theme from 'styles/EnergyBeeTheme';
 class AppComponent extends React.Component {
@@ -14,15 +40,17 @@ class AppComponent extends React.Component {
   }
 
   getChildContext() {
-  return {muiTheme: getMuiTheme(baseTheme)};
+    return {muiTheme: getMuiTheme(muiTheme)};
 }
 
   render(){
     return (
       <div>
-        <AppBar
-          title='WarframeLFG.io'
-          />
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <AppBar
+            title='WarframeLFG.io'
+            />
+        </MuiThemeProvider>
         {this.props.children}
       </div>
     )

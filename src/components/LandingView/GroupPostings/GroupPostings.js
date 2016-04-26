@@ -44,6 +44,10 @@ class GroupPostings extends React.Component{
     this.setState({postFormOpen: true});
   }
 
+  handleClose(){
+    this.setState({postFormOpen: false});
+  }
+
   renderPosts() {
     var posts = this.state.filteredPosts ? this.state.filteredPosts : this.state.posts;
     var postMap = posts.map((post, index) => {
@@ -128,6 +132,7 @@ class GroupPostings extends React.Component{
       <PostFormModal
           appData={this.state.appData}
           open={this.state.postFormOpen}
+          handleClose={this.handleClose.bind(this)}
       />
       </div>
     );
