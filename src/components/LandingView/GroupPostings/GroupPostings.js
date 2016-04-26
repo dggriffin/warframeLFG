@@ -18,7 +18,8 @@ class GroupPostings extends React.Component{
     this.state = {
       appData: props.appData,
       postFormOpen: false,
-      posts: []
+      posts: [],
+      filter: {mission: '1', platform: '1', region: '1'}
     };
   }
 
@@ -49,73 +50,23 @@ class GroupPostings extends React.Component{
   }
 
   renderPosts() {
-    var posts = this.state.filteredPosts ? this.state.filteredPosts : this.state.posts;
-    var postMap = posts.map((post, index) => {
+    const filter = this.state.filter;
+    const posts = this.state.posts;
+    debugger;
+    let filteredPosts = _.filter(posts, (post) => {
+      return (filter.platform === '1' || post.platform === filter.platform) &&
+      (filter.region === '1' || post.region === filter.region) &&
+      (filter.mission === '1' || post.mission.name === filter.mission);
+    });
+
+    var postMap = filteredPosts.map((post, index) => {
       return <GroupPost post={post} key={index} appData={this.state.appData}/>
     });
     return postMap.length ? postMap.reverse() : <div className={styles.noResults} style={{marginTop: '3em'}}>Sorry! There are no results that meet this criteria in the past hour.</div>
   }
 
   handleFilterChange(filter) {
-    base.removeBinding(this.ref);
-
-    if (filter.mission === '1') {
-      this.ref = base.syncState('postings', {
-        context: this,
-        state: 'posts',
-        asArray: true,
-        then(){
-          this.handleClientFilters(filter);
-        }
-      });
-    } else {
-      this.ref = base.syncState('postings', {
-        context: this,
-        state: 'posts',
-        asArray: true,
-        queries: {
-          orderByChild: 'mission/name',
-          equalTo: filter.mission
-        },
-        then(){
-          this.handleClientFilters(filter);
-        }
-      });
-    }
-  }
-
-  handleClientFilters(filter) {
-    if (filter.mission === '1') {
-      base.fetch('postings', {
-        context: this,
-        asArray: true,
-        then (data) {
-          let unfilteredPosts = data;
-          let filteredPosts =  _.filter(unfilteredPosts, (post) => {
-            return (filter.platform === '1' || post.platform === filter.platform) &&
-            (filter.region === '1' || post.region === filter.region);
-          });
-          this.setState({filteredPosts: filteredPosts});
-        }
-      });
-    } else {
-      base.fetch('postings', {
-        context: this,
-        asArray: true,
-        queries: {
-          orderByChild: 'mission/name',
-          equalTo: filter.mission
-        },
-        then (data) {
-          let unfilteredPosts = data;
-          let filteredPosts =  _.filter(unfilteredPosts, (post) => {
-            return (filter.platform === '1' || post.platform === filter.platform) &&
-            (filter.region === '1' || post.region === filter.region);
-          });
-          this.setState({filteredPosts: filteredPosts});
-        }
-      });
-    }
+    this.setState({filter});
   }
 
   render() {
