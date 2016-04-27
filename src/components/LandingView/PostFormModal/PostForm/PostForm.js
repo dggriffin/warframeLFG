@@ -22,7 +22,6 @@ class PostForm extends React.Component{
       open: false,
       handleClose: props.handleClose,
       stepIndex: 0,
-      finished: false,
       lastActiveStep: 0,
       playerObject: {},
       missionObject: {},
@@ -168,10 +167,10 @@ class PostForm extends React.Component{
   }
 
   render() {
-    const {finished, stepIndex} = this.state;
+    const {stepIndex} = this.state;
     return (
-      <div style={{padding: "0 !important"}}>
-        <Stepper style={{padding: '15px 0 15px 0', width: '100%', backgroundColor: 'rgb(232, 232, 232)'}}
+      <div style={{padding: '0px !important'}}>
+        <Stepper style={{padding: '15px 0 15px 0', margin: '-24px 0 0 0', width: '100%', backgroundColor: 'rgb(232, 232, 232)'}}
           activeStep={stepIndex}
           >
           <Step style={{flex: '0 3 auto'}}>

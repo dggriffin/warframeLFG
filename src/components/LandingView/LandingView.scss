@@ -1,3 +1,9 @@
+@media (max-width: 420px) {
+  .visibility {
+    display: none;
+  }
+}
+
 .heroDiv {
   height: 100%;
   padding-top: 10em;
@@ -9,6 +15,7 @@
   color: white;
   text-align: center;
   font-weight: 300;
+  composes: visibility;
 }
 
 .title {
@@ -29,6 +36,7 @@
 
 .content {
     min-height: 800px;
+    max-width: 1200px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;

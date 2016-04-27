@@ -52,7 +52,6 @@ class GroupPostings extends React.Component{
   renderPosts() {
     const filter = this.state.filter;
     const posts = this.state.posts;
-    debugger;
     let filteredPosts = _.filter(posts, (post) => {
       return (filter.platform === '1' || post.platform === filter.platform) &&
       (filter.region === '1' || post.region === filter.region) &&
