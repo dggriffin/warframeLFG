@@ -36,7 +36,10 @@ class LandingView extends React.Component {
     return (
       <div>
         <div className={styles.heroDiv}>
-          <h1 className={styles.title}>WarframeLFG</h1>
+          <div>
+            <h1 className={styles.title}>WarframeLFG</h1>
+          </div>
+
           <h5 className={styles.titleSubtext}>
             A simple app to post and search for groups in Warframe.
           </h5>

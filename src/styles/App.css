@@ -29,12 +29,22 @@ h1,h2,h3,h4 {
 
 .group-posting-toolbar{
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgb(232, 232, 232);
+  padding: 1em;
+  flex-wrap: wrap;
+}
+
+.group-posting-row{
+  display: flex;
   flex-direction: row;
   background-color: rgb(232, 232, 232);
   padding: 1em;
   flex-wrap: wrap;
   align-items: center;
 }
+
 
 .group-posting-toolbar-right{
   display: flex;

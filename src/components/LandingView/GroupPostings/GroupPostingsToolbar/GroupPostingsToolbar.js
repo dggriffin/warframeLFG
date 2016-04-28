@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ToolbarSeparator from 'material-ui/Toolbar/ToolbarSeparator';
 import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
+import {Motion, spring} from 'react-motion';
 
 class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
@@ -61,68 +62,76 @@ class GroupPostingsToolbar extends React.Component{
   }
 
   handleToggle(event, index, value){
-    this.setState({advancedToggle: value});
+    debugger;
+    this.setState({advancedToggle: index});
   }
 
   render() {
     return (
-      <div className='group-posting-toolbar'>
-        <div className='group-posting-toolbar-left'>
-          <SelectField
-            autoWidth={true}
-            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
-            value={this.state.missionFilter}
-            onChange={this.handleMissionChange.bind(this)}
-            floatingLabelText='mission'
-            floatingLabelStyle={{fontSize: '1.2em'}}
-            >
-              <MenuItem value='1' primaryText='any mission' />
-              {this.renderMissionMenuItems()}
-          </SelectField>
+      <Motion style={{toolbarHeight: spring(this.state.advancedToggle ? 400 : 70)}}>
+        {({toolbarHeight}) =>
+          <div className='group-posting-toolbar' style={{height: toolbarHeight}}>
+            <div className='group-posting-row'>
+              <div className='group-posting-toolbar-left'>
+                <SelectField
+                  autoWidth={true}
+                  style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+                  value={this.state.missionFilter}
+                  onChange={this.handleMissionChange.bind(this)}
+                  floatingLabelText='mission'
+                  floatingLabelStyle={{fontSize: '1.2em'}}
+                  >
+                    <MenuItem value='1' primaryText='any mission' />
+                    {this.renderMissionMenuItems()}
+                </SelectField>
 
-          <SelectField
-            autoWidth={true}
-            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
-            value={this.state.platformFilter}
-            onChange={this.handlePlatformChange.bind(this)}
-            floatingLabelText='platform'
-            floatingLabelStyle={{fontSize: '1.2em'}}
-            >
-              <MenuItem value='1' primaryText='any platform' />
-              {this.renderPlatformMenuItems()}
-          </SelectField>
+                <SelectField
+                  autoWidth={true}
+                  style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+                  value={this.state.platformFilter}
+                  onChange={this.handlePlatformChange.bind(this)}
+                  floatingLabelText='platform'
+                  floatingLabelStyle={{fontSize: '1.2em'}}
+                  >
+                    <MenuItem value='1' primaryText='any platform' />
+                    {this.renderPlatformMenuItems()}
+                </SelectField>
 
-          <SelectField
-            autoWidth={true}
-            style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
-            value={this.state.regionFilter}
-            onChange={this.handleRegionChange.bind(this)}
-            floatingLabelText='region'
-            floatingLabelStyle={{fontSize: '1.2em'}}
-            >
-              <MenuItem value='1' primaryText='any region' />
-              {this.renderRegionMenuItems()}
-          </SelectField>
-        </div>
+                <SelectField
+                  autoWidth={true}
+                  style={{maxWidth: 150, fontSize: '1em', width: '33%', overflow: 'hidden', display: 'inline-block'}}
+                  value={this.state.regionFilter}
+                  onChange={this.handleRegionChange.bind(this)}
+                  floatingLabelText='region'
+                  floatingLabelStyle={{fontSize: '1.2em'}}
+                  >
+                    <MenuItem value='1' primaryText='any region' />
+                    {this.renderRegionMenuItems()}
+                </SelectField>
+              </div>
 
-        <div className='group-posting-toolbar-right'>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <Toggle
-              toggled={this.state.advancedToggle}
-              onToggle={this.handleToggle.bind(this)}
-              className='grey-text'
-              label='Advanced'
-            />
+
+              <div className='group-posting-toolbar-right'>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                  <Toggle
+                    toggled={this.state.advancedToggle}
+                    onToggle={this.handleToggle.bind(this)}
+                    className='grey-text'
+                    label='Advanced'
+                  />
+                </div>
+
+                <ToolbarSeparator style={{top: 0, marginRight: 25, height: 40}}/>
+
+                <RaisedButton label='Post'
+                  primary={true}
+                  onClick={this.state.onCreatePost}
+                />
+              </div>
+            </div>
           </div>
-
-          <ToolbarSeparator style={{top: 0, marginRight: 25, height: 40}}/>
-
-          <RaisedButton label='Post'
-            primary={true}
-            onClick={this.state.onCreatePost}
-          />
-        </div>
-      </div>
+        }
+    </Motion>
     );
   }
 }
