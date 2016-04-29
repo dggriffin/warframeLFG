@@ -6,6 +6,8 @@ import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import {Motion, spring} from 'react-motion';
 
+import AdvancedFilters from './AdvancedFilters/AdvancedFilters';
+
 class GroupPostingsToolbar extends React.Component{
   constructor(props) {    /* Note props is passed into the constructor in order to be used */
     super(props);
@@ -16,7 +18,9 @@ class GroupPostingsToolbar extends React.Component{
       platformFilter: '1',
       regionFilter: '1',
       advancedToggle: false,
-      onChange: props.onChange
+      onChange: props.onChange,
+      selectedMission: null,
+      showAdvancedContent: false
     };
   }
 
@@ -29,8 +33,8 @@ class GroupPostingsToolbar extends React.Component{
   }
 
   renderMissionMenuItems(){
-    return this.state.appData.missions.map((mission) => {
-      return <MenuItem key={mission.name} value={mission.name} primaryText={mission.name} />
+    return Object.keys(this.state.appData.missions).reverse().map((mission) => {
+      return <MenuItem key={mission} value={this.state.appData.missions[mission]} primaryText={mission} />
     });
   }
 
@@ -47,7 +51,7 @@ class GroupPostingsToolbar extends React.Component{
   }
 
   handleMissionChange(event, index, value){
-    this.setState({missionFilter: value});
+    this.setState({missionFilter: value, selectedMission: value});
     this.state.onChange({mission: value, platform: this.state.platformFilter, region: this.state.regionFilter});
   }
 
@@ -62,15 +66,19 @@ class GroupPostingsToolbar extends React.Component{
   }
 
   handleToggle(event, index, value){
-    debugger;
-    this.setState({advancedToggle: index});
+    this.setState({advancedToggle: index, showAdvancedContent: false});
+  }
+
+  showAdvancedContent() {
+    this.setState({showAdvancedContent: true});
   }
 
   render() {
     return (
-      <Motion style={{toolbarHeight: spring(this.state.advancedToggle ? 400 : 70)}}>
+      <Motion onRest={this.showAdvancedContent.bind(this)} style={{toolbarHeight: spring(this.state.advancedToggle ? 400 : 70, {stiffness: 120, damping: 17})}}>
         {({toolbarHeight}) =>
           <div className='group-posting-toolbar' style={{height: toolbarHeight}}>
+
             <div className='group-posting-row'>
               <div className='group-posting-toolbar-left'>
                 <SelectField
@@ -129,6 +137,16 @@ class GroupPostingsToolbar extends React.Component{
                 />
               </div>
             </div>
+
+            { this.state.showAdvancedContent && this.state.advancedToggle ?
+              <div className='group-posting-row'>
+                <AdvancedFilters
+                  appData={this.state.appData}
+                  selectedMission={this.state.selectedMission}
+                />
+              </div> : null
+            }
+
           </div>
         }
     </Motion>

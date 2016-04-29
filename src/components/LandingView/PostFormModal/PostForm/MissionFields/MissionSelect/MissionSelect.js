@@ -25,8 +25,8 @@ class MissionSelect extends React.Component{
   }
 
   renderMenuItems(){
-    return this.state.missions.map((mission) => {
-      return <MenuItem key={mission.name} value={mission} primaryText={mission.name} />
+    return Object.keys(this.state.missions).reverse().map((mission) => {
+      return <MenuItem key={mission} value={this.state.missions[mission]} primaryText={mission} />
     });
   }
 

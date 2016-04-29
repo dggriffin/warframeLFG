@@ -33,15 +33,15 @@ h1,h2,h3,h4 {
   justify-content: flex-start;
   background-color: rgb(232, 232, 232);
   padding: 1em;
-  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .group-posting-row{
   display: flex;
   flex-direction: row;
   background-color: rgb(232, 232, 232);
-  padding: 1em;
   flex-wrap: wrap;
+  width: 100%;
   align-items: center;
 }
 

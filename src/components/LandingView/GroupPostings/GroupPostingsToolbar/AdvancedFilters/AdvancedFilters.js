@@ -1,0 +1,49 @@
+import React from 'react';
+
+import MissionQuestionSelect from 'components/LandingView/PostFormModal/PostForm/MissionFields/MissionQuestionSelect/MissionQuestionSelect';
+import styles from './AdvancedFilters.scss';
+
+class AdvancedFilters extends React.Component{
+  constructor(props) {    /* Note props is passed into the constructor in order to be used */
+    super(props);
+    this.state = {
+      appData: props.appData,
+      selectedMission: null
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedMission: nextProps.selectedMission
+    });
+  }
+
+  renderMissionDetail() {
+    if (!this.state.selectedMission) {
+      return null;
+    }
+    //Reverse for non-alphabetic order..
+    let keys = Object.keys(this.state.selectedMission).reverse();
+    return keys.map((key) => {
+      //handle the 'what' key separately, because it's dependent on the 'type' question
+      if (this.state.selectedMission[key] instanceof Array && key !== 'what') {
+        return <MissionQuestionSelect
+          //onChange={this.handleOnChange.bind(this, key)}
+          key={key + this.state.selectedMission['name']}
+          keyName={key}
+          errorText={!this.state.validation || this.state.validation[key] ? '' : 'This field is required'}
+          valueList={this.state.selectedMission[key]}/>
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderMissionDetail()}
+      </div>
+    );
+  }
+}
+
+module.exports = AdvancedFilters;

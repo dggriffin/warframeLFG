@@ -55,7 +55,7 @@ class GroupPostings extends React.Component{
     let filteredPosts = _.filter(posts, (post) => {
       return (filter.platform === '1' || post.platform === filter.platform) &&
       (filter.region === '1' || post.region === filter.region) &&
-      (filter.mission === '1' || post.mission.name === filter.mission);
+      (filter.mission === '1' || post.mission.name === filter.mission.name);
     });
 
     var postMap = filteredPosts.map((post, index) => {
