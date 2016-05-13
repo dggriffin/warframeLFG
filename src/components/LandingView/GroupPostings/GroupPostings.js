@@ -19,7 +19,7 @@ class GroupPostings extends React.Component{
       appData: props.appData,
       postFormOpen: false,
       posts: [],
-      filter: {mission: '1', platform: '1', region: '1'}
+      filter: {mission: '1', platform: '1', region: '1', advanced: {}}
     };
   }
 
@@ -58,10 +58,28 @@ class GroupPostings extends React.Component{
       (filter.mission === '1' || post.mission.name === filter.mission.name);
     });
 
+    filteredPosts = this.filterByAdvanced(filteredPosts);
+
     var postMap = filteredPosts.map((post, index) => {
       return <GroupPost post={post} key={index} appData={this.state.appData}/>
     });
     return postMap.length ? postMap.reverse() : <div className={styles.noResults} style={{marginTop: '3em'}}>Sorry! There are no results that meet this criteria in the past hour.</div>
+  }
+
+  filterByAdvanced(posts){
+    debugger;
+    const filter = this.state.filter.advanced;
+    let filteredPosts = posts;
+    let keys = Object.keys(filter);
+    if (keys.length) {
+      filteredPosts = _.filter(filteredPosts, (post) => {
+        return _.reduce(keys, (memo, key) => {
+          return memo && filter[key] === post.mission[key];
+        }, true);
+      });
+    }
+    return filteredPosts;
+
   }
 
   handleFilterChange(filter) {

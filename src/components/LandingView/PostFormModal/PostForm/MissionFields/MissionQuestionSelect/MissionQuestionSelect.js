@@ -38,7 +38,7 @@ class MissionQuestionSelect extends React.Component{
   render() {
     return (
       <SelectField
-        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block', overflow: 'visible'}}
+        style={{ fontSize: '1em', width: '90%', overflow: 'hidden', display: 'inline-block'}}
         autoWidth={true}
         value={this.state.value}
         disabled={!this.state.valueList}

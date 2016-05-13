@@ -8,14 +8,20 @@ class AdvancedFilters extends React.Component{
     super(props);
     this.state = {
       appData: props.appData,
-      selectedMission: null
+      selectedMission: null,
+      onChangeCallback: props.onChangeCallback
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      selectedMission: nextProps.selectedMission
+      selectedMission: nextProps.selectedMission,
+      onChangeCallback: nextProps.onChangeCallback
     });
+  }
+
+  handleOnChange(key, value){
+    this.state.onChangeCallback(key, value);
   }
 
   renderMissionDetail() {
@@ -28,7 +34,7 @@ class AdvancedFilters extends React.Component{
       //handle the 'what' key separately, because it's dependent on the 'type' question
       if (this.state.selectedMission[key] instanceof Array && key !== 'what') {
         return <MissionQuestionSelect
-          //onChange={this.handleOnChange.bind(this, key)}
+          onChange={this.handleOnChange.bind(this, key)}
           key={key + this.state.selectedMission['name']}
           keyName={key}
           errorText={!this.state.validation || this.state.validation[key] ? '' : 'This field is required'}

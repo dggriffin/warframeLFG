@@ -17,10 +17,10 @@ class GroupPostingsToolbar extends React.Component{
       missionFilter: '1',
       platformFilter: '1',
       regionFilter: '1',
+      advancedFilterObject: {},
       advancedToggle: false,
       onChange: props.onChange,
-      selectedMission: null,
-      showAdvancedContent: false
+      selectedMission: null
     };
   }
 
@@ -51,33 +51,40 @@ class GroupPostingsToolbar extends React.Component{
   }
 
   handleMissionChange(event, index, value){
-    this.setState({missionFilter: value, selectedMission: value});
-    this.state.onChange({mission: value, platform: this.state.platformFilter, region: this.state.regionFilter});
+    this.setState({missionFilter: value, selectedMission: value, advancedFilterObject: {}});
+    this.state.onChange({mission: value, platform: this.state.platformFilter, region: this.state.regionFilter, advanced: {}});
   }
 
   handlePlatformChange(event, index, value){
     this.setState({platformFilter: value});
-    this.state.onChange({mission: this.state.missionFilter, platform: value, region: this.state.regionFilter});
+    this.state.onChange({mission: this.state.missionFilter, platform: value, region: this.state.regionFilter, advanced: this.state.advancedFilterObject});
   }
 
   handleRegionChange(event, index, value){
     this.setState({regionFilter: value});
-    this.state.onChange({mission: this.state.missionFilter, platform: this.state.platformFilter, region: value});
+    this.state.onChange({mission: this.state.missionFilter, platform: this.state.platformFilter, region: value, advanced: this.state.advancedFilterObject});
   }
 
   handleToggle(event, index, value){
-    this.setState({advancedToggle: index, showAdvancedContent: false});
+    this.setState({advancedToggle: index});
+    if (!index) {
+      this.setState({advancedFilterObject: {}});
+      this.state.onChange({mission: this.state.missionFilter, platform: this.state.platformFilter, region: this.state.regionFilter, advanced: {}});
+    }
   }
 
-  showAdvancedContent() {
-    this.setState({showAdvancedContent: true});
+  handleAdvancedFilterChange(key, value){
+    let advancedFilterObject = {};
+    advancedFilterObject[key] = value;
+    this.setState({advancedFilterObject});
+    this.state.onChange({mission: this.state.missionFilter, platform: this.state.platformFilter, region: this.state.regionFilter, advanced: advancedFilterObject});
   }
 
   render() {
     return (
-      <Motion onRest={this.showAdvancedContent.bind(this)} style={{toolbarHeight: spring(this.state.advancedToggle ? 400 : 70, {stiffness: 120, damping: 17})}}>
+      <Motion style={{toolbarHeight: spring(this.state.advancedToggle ? 400 : 100, {stiffness: 120, damping: 17})}}>
         {({toolbarHeight}) =>
-          <div className='group-posting-toolbar' style={{height: toolbarHeight}}>
+          <div className='group-posting-toolbar' style={{maxHeight: toolbarHeight}}>
 
             <div className='group-posting-row'>
               <div className='group-posting-toolbar-left'>
@@ -138,11 +145,12 @@ class GroupPostingsToolbar extends React.Component{
               </div>
             </div>
 
-            { this.state.showAdvancedContent && this.state.advancedToggle ?
+            { this.state.advancedToggle ?
               <div className='group-posting-row'>
                 <AdvancedFilters
                   appData={this.state.appData}
                   selectedMission={this.state.selectedMission}
+                  onChangeCallback={this.handleAdvancedFilterChange.bind(this)}
                 />
               </div> : null
             }
