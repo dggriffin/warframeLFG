@@ -67,7 +67,6 @@ class GroupPostings extends React.Component{
   }
 
   filterByAdvanced(posts){
-    debugger;
     const filter = this.state.filter.advanced;
     let filteredPosts = posts;
     let keys = Object.keys(filter);

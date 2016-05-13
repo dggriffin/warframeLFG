@@ -46,6 +46,11 @@ class MissionFields extends React.Component{
 
   //onChange callback/postObj handle for all subquestions
   handleOnChange(key, value) {
+    //temporary hack to prevent long comments
+    if (key === 'comment') {
+      value = value.substr(0, 200);
+    }
+    
     let newValue = {};
     //Check if string since we're using this for textfield changes that return an event
     newValue[key] = typeof value === 'string' ? value : value.currentTarget.value;
