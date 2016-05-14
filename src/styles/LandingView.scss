@@ -1,0 +1,59 @@
+@media (max-width: 420px) {
+  .visibility {
+    display: none;
+  }
+}
+
+.heroDiv {
+  height: 100%;
+  padding-top: 10em;
+  padding-bottom: 10em;
+  background-image: url("images/0039-new.jpg");
+  background-position:top;
+  background-blend-mode: overlay;
+  background-color: #00bcd4;
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  composes: visibility;
+}
+
+.title {
+  color: white;
+  font-weight: 100;
+  font-size: 4em;
+}
+
+.titleSubtext {
+  color: white;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.loader {
+  align-self: center;
+}
+
+.content {
+    min-height: 800px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  padding-top: 2em;
+  font-size: .7em;
+}
+
+.footerHalfColumn {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  text-align: center;
+}
