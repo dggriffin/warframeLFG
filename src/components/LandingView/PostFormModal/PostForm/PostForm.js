@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import Rebase from 're-base';
-const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
+const base = Rebase.createClass('https://warframelfg.firebaseio.com/');
 
 import MissionFields from './MissionFields/MissionFields';
 import PlayerFields from './PlayerFields/PlayerFields';

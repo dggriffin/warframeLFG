@@ -6,7 +6,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Paper from 'material-ui/Paper';
 import styles from './LandingView.scss'
 
-const base = Rebase.createClass('https://vivid-fire-8661.firebaseio.com/');
+const base = Rebase.createClass('https://warframelfg.firebaseio.com/');
 
 class LandingView extends React.Component {
   constructor(props){
